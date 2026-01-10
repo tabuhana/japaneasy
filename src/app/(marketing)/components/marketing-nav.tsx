@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/logo';
 import { WaveBackground } from '@/components/wave-background';
+import Link from 'next/link';
 
 export const MarketingNav = () => {
   return (
@@ -13,8 +14,12 @@ export const MarketingNav = () => {
           <div className='flex items-center justify-between'>
             <Logo />
             <div className='flex items-center gap-3'>
-              <Button variant='outline'>Login</Button>
-              <Button>Sign Up</Button>
+              <Button variant='outline' asChild>
+                <Link href='/auth/signin'>Sign In</Link>
+              </Button>
+              <Button asChild>
+                <Link href='/auth/signup'>Sign Up</Link>
+              </Button>
             </div>
           </div>
         </header>
