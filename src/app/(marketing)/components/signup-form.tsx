@@ -1,9 +1,12 @@
 'use client';
 
+import { useState, useTransition } from 'react';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import { signUp } from '@/lib/auth-actions';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -19,10 +22,10 @@ const signupSchema = z
   .object({
     username: z.string().min(3, 'Username must be at least 3 characters'),
     email: z.string().email('Please enter a valid email'),
-    password: z.string().min(6, 'Password must be at least 6 characters'),
+    password: z.string().min(8, 'Password must be at least 8 characters'),
     confirmPassword: z.string().min(1, 'Please confirm your password'),
   })
-  .refine((data) => data.password === data.confirmPassword, {
+  .refine(data => data.password === data.confirmPassword, {
     message: 'Passwords do not match',
     path: ['confirmPassword'],
   });
@@ -30,6 +33,9 @@ const signupSchema = z
 type SignupFormValues = z.infer<typeof signupSchema>;
 
 export function SignupForm() {
+  const [error, setError] = useState<string>();
+  const [isPending, startTransition] = useTransition();
+
   const form = useForm<SignupFormValues>({
     resolver: zodResolver(signupSchema),
     defaultValues: {
@@ -41,7 +47,17 @@ export function SignupForm() {
   });
 
   function onSubmit(data: SignupFormValues) {
-    console.log(data);
+    setError(undefined);
+    startTransition(async () => {
+      const result = await signUp({
+        name: data.username,
+        email: data.email,
+        password: data.password,
+      });
+      if (result?.error) {
+        setError(result.error);
+      }
+    });
   }
 
   return (
@@ -117,11 +133,13 @@ export function SignupForm() {
             </FormItem>
           )}
         />
+        {error && <p className='text-destructive text-sm'>{error}</p>}
         <Button
           type='submit'
           className='w-full'
+          disabled={isPending}
         >
-          Sign Up
+          {isPending ? 'Creating account...' : 'Sign Up'}
         </Button>
       </form>
     </Form>

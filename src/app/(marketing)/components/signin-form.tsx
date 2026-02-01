@@ -1,9 +1,12 @@
 'use client';
 
+import { useState, useTransition } from 'react';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import { signIn } from '@/lib/auth-actions';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -16,23 +19,32 @@ import {
 import { Input } from '@/components/ui/input';
 
 const signinSchema = z.object({
-  username: z.string().min(1, 'Username is required'),
+  email: z.string().email('Please enter a valid email'),
   password: z.string().min(1, 'Password is required'),
 });
 
 type SigninFormValues = z.infer<typeof signinSchema>;
 
 export function SigninForm() {
+  const [error, setError] = useState<string>();
+  const [isPending, startTransition] = useTransition();
+
   const form = useForm<SigninFormValues>({
     resolver: zodResolver(signinSchema),
     defaultValues: {
-      username: '',
+      email: '',
       password: '',
     },
   });
 
   function onSubmit(data: SigninFormValues) {
-    console.log(data);
+    setError(undefined);
+    startTransition(async () => {
+      const result = await signIn(data);
+      if (result?.error) {
+        setError(result.error);
+      }
+    });
   }
 
   return (
@@ -43,13 +55,14 @@ export function SigninForm() {
       >
         <FormField
           control={form.control}
-          name='username'
+          name='email'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Email</FormLabel>
               <FormControl>
                 <Input
-                  placeholder='Enter your username'
+                  type='email'
+                  placeholder='Enter your email'
                   {...field}
                 />
               </FormControl>
@@ -74,11 +87,13 @@ export function SigninForm() {
             </FormItem>
           )}
         />
+        {error && <p className='text-destructive text-sm'>{error}</p>}
         <Button
           type='submit'
           className='w-full'
+          disabled={isPending}
         >
-          Sign In
+          {isPending ? 'Signing in...' : 'Sign In'}
         </Button>
       </form>
     </Form>
