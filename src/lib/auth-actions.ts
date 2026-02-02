@@ -33,6 +33,7 @@ export async function signUp(values: { name: string; email: string; password: st
     const message = error instanceof Error ? error.message : 'Failed to create account';
     return { error: message };
   }
+
   redirect('/dashboard');
 }
 
