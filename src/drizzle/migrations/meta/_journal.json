@@ -15,6 +15,13 @@
       "when": 1770021555578,
       "tag": "0001_noisy_guardian",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1770072383769,
+      "tag": "0002_graceful_roxanne_simpson",
+      "breakpoints": true
     }
   ]
 }
