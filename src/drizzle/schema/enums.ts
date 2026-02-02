@@ -5,3 +5,5 @@ export const jlptLevelEnum = pgEnum('jlpt_level', ['N5', 'N4', 'N3', 'N2', 'N1']
 export const levelStatusEnum = pgEnum('level_status', ['locked', 'active', 'completed'])
 
 export const cardStatusEnum = pgEnum('card_status', ['new', 'learning', 'reviewing', 'mastered'])
+
+export type JlptLevelEnum = (typeof jlptLevelEnum.enumValues)[number];

@@ -268,7 +268,7 @@ export type NewWord = typeof words.$inferInsert;
 CREATE INDEX idx_words_level ON words(level);
 ```
 - **Why?** Query: "Get random N5 words not yet added to this user's deck" filters by level first.
-- **Performance**: Narrows search from 10,000+ words to ~1,000 N5 words before the NOT IN check.
+- **Performance**: Narrows search from 10,000+ words to ~1,000 N5 words before the NOT IN check. Now when you query for level = 'N5', PostgreSQL jumps directly to the N5 entries instead of scanning everything. This is O(log n) instead of O(n).
 
 **Data Population:**
 ```typescript
