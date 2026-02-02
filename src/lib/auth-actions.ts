@@ -36,9 +36,14 @@ export async function signUp(values: { name: string; email: string; password: st
   redirect('/dashboard');
 }
 
-export async function getSession() {
+export async function getUser() {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
-  return session;
+
+  if (!session) return null
+
+  const { user } = session
+
+  return user;
 }
