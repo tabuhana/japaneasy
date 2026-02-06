@@ -1,9 +1,9 @@
 import { betterAuth } from 'better-auth';
-import { nextCookies } from 'better-auth/next-js';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
+import { nextCookies } from 'better-auth/next-js';
 
 import db from '@/drizzle';
-import { UserProgress } from '@/drizzle/schema/userProgress';
+import { userProgress } from '@/drizzle/schema/user-progress';
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
@@ -16,7 +16,7 @@ export const auth = betterAuth({
     user: {
       create: {
         after: async user => {
-          await db.insert(UserProgress).values({
+          await db.insert(userProgress).values({
             userId: user.id,
           });
         },
