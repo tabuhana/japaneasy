@@ -57,10 +57,13 @@ export function SignupForm() {
         email: data.email,
         password: data.password,
       });
-      
+
       if (result.success) {
-        await createUserProgress();
-        // TODO: Add a success message
+        const progressResult = await createUserProgress();
+        if (!progressResult.success) {
+          setError(progressResult.message);
+          return;
+        }
         router.push('/dashboard');
       } else {
         setError(result.message);
