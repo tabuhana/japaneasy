@@ -1681,13 +1681,13 @@ export default function() {
 ## Summary Checklist
 
 ### Week 1: Database Setup
-- [ ] Install Drizzle + Postgres
-- [ ] Create schema files (enums, userProgress, word, userWord, userLevelProgress, review)
-- [ ] Generate and run migrations
-- [ ] Create indexes
-- [ ] Import words from CSV
-- [ ] Set up Better Auth
-- [ ] Create user progress initialization function
+- [x] Install Drizzle + Postgres
+- [x] Create schema files (enums, userProgress, word, userWord, userLevelProgress, review)
+- [x] Generate and run migrations
+- [x] Create indexes
+- [x] Import words from CSV
+- [x] Set up Better Auth
+- [x] Create user progress initialization function
 - [ ] Test signup flow (Better Auth + user progress creation)
 
 ### Week 2: Core Logic
@@ -1780,3 +1780,24 @@ If you encounter any problems during implementation:
 4. Review migration files: Ensure all tables/indexes were created
 
 Good luck building Japaneasy! 🎌
+
+## Pattern to Follow
+
+For your queries/mutations files, use database-specific verbs:
+Mutations (writes):
+
+```
+insertUserProgress
+updateUserProgress
+deleteUserProgress
+upsertUserWord
+```
+
+
+Queries (reads):
+```
+getUserProgressById
+findUserProgressByUserId
+listAllUserProgress
+```
+This way, your actions keep business-friendly names (createUserProgress), while your database layer uses operation-specific names (insertUserProgress).

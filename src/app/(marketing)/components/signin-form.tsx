@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { signIn } from '@/lib/auth-actions';
+import { handleSignIn } from '@/server/actions/auth-actions';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -17,6 +17,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { useRouter } from 'next/navigation';
 
 const signinSchema = z.object({
   email: z.string().email('Please enter a valid email'),
@@ -28,6 +29,7 @@ type SigninFormValues = z.infer<typeof signinSchema>;
 export function SigninForm() {
   const [error, setError] = useState<string>();
   const [isPending, startTransition] = useTransition();
+  const router = useRouter();
 
   const form = useForm<SigninFormValues>({
     resolver: zodResolver(signinSchema),
@@ -37,12 +39,14 @@ export function SigninForm() {
     },
   });
 
-  function onSubmit(data: SigninFormValues) {
+  const onSubmit = (data: SigninFormValues) => {
     setError(undefined);
     startTransition(async () => {
-      const result = await signIn(data);
-      if (result?.error) {
-        setError(result.error);
+      const result = await handleSignIn(data);
+      if (result.success) {
+        router.push('/dashboard');
+      } else {
+        setError(result.message);
       }
     });
   }

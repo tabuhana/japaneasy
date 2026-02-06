@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { signUp } from '@/lib/auth-actions';
+import { handleSignUp } from '@/server/actions/auth-actions';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -17,6 +17,8 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { useRouter } from 'next/navigation';
+import { createUserProgress } from '@/server/actions/user-actions';
 
 const signupSchema = z
   .object({
@@ -35,6 +37,7 @@ type SignupFormValues = z.infer<typeof signupSchema>;
 export function SignupForm() {
   const [error, setError] = useState<string>();
   const [isPending, startTransition] = useTransition();
+  const router = useRouter();
 
   const form = useForm<SignupFormValues>({
     resolver: zodResolver(signupSchema),
@@ -46,16 +49,21 @@ export function SignupForm() {
     },
   });
 
-  function onSubmit(data: SignupFormValues) {
+  const onSubmit = (data: SignupFormValues) => {
     setError(undefined);
     startTransition(async () => {
-      const result = await signUp({
+      const result = await handleSignUp({
         name: data.username,
         email: data.email,
         password: data.password,
       });
-      if (result?.error) {
-        setError(result.error);
+      
+      if (result.success) {
+        await createUserProgress();
+        // TODO: Add a success message
+        router.push('/dashboard');
+      } else {
+        setError(result.message);
       }
     });
   }

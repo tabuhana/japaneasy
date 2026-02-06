@@ -1,11 +1,14 @@
 'use server';
 
 import { headers } from 'next/headers';
-import { redirect } from 'next/navigation';
 
 import { auth } from '@/lib/auth';
+import { ActionResponse } from '@/lib/types';
 
-export async function signIn(values: { email: string; password: string }) {
+export const handleSignIn = async (values: {
+  email: string;
+  password: string;
+}): Promise<ActionResponse> => {
   try {
     await auth.api.signInEmail({
       body: {
@@ -13,14 +16,18 @@ export async function signIn(values: { email: string; password: string }) {
         password: values.password,
       },
     });
+    return { success: true, message: 'Sign in successful' };
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Invalid email or password';
-    return { error: message };
+    return { success: false, message };
   }
-  redirect('/dashboard');
-}
+};
 
-export async function signUp(values: { name: string; email: string; password: string }) {
+export const handleSignUp = async (values: {
+  name: string;
+  email: string;
+  password: string;
+}): Promise<ActionResponse> => {
   try {
     await auth.api.signUpEmail({
       body: {
@@ -29,22 +36,21 @@ export async function signUp(values: { name: string; email: string; password: st
         password: values.password,
       },
     });
+    return { success: true, message: 'Account created successfully' };
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Failed to create account';
-    return { error: message };
+    return { success: false, message };
   }
-
-  redirect('/dashboard');
-}
+};
 
 export async function getUser() {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
 
-  if (!session) return null
+  if (!session) return null;
 
-  const { user } = session
+  const { user } = session;
 
   return user;
 }
