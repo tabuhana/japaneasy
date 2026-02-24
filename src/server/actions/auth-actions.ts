@@ -10,12 +10,14 @@ export const handleSignIn = async (values: {
   password: string;
 }): Promise<ActionResponse> => {
   try {
-    await auth.api.signInEmail({
-      body: {
-        email: values.email,
-        password: values.password,
-      },
-    });
+    // await auth.api.signInEmail({
+    //   body: {
+    //     email: values.email,
+    //     password: values.password,
+    //   },
+    // });
+
+    throw new Error()
     return { success: true, message: 'Sign in successful' };
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Invalid email or password';
@@ -24,14 +26,13 @@ export const handleSignIn = async (values: {
 };
 
 export const handleSignUp = async (values: {
-  name: string;
   email: string;
   password: string;
 }): Promise<ActionResponse> => {
   try {
     await auth.api.signUpEmail({
       body: {
-        name: values.name,
+        name: '',
         email: values.email,
         password: values.password,
       },
