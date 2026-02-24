@@ -57,6 +57,13 @@
       "when": 1770348863926,
       "tag": "0007_mixed_captain_flint",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1770707956168,
+      "tag": "0008_crazy_wraith",
+      "breakpoints": true
     }
   ]
 }

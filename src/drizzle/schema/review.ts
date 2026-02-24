@@ -1,4 +1,4 @@
-import { boolean, index, integer, pgTable, timestamp, uuid } from 'drizzle-orm/pg-core';
+import { boolean, index, integer, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 
 import { cardStatusEnum } from './enums';
 import { userProgress } from './user-progress';
@@ -7,7 +7,7 @@ import { userWords } from './user-word';
 export const reviews = pgTable('reviews', {
   id: uuid('id').defaultRandom().primaryKey(),
 
-  userId: uuid('user_id')
+  userId: text('user_id')
     .notNull()
     .references(() => userProgress.userId, { onDelete: 'cascade' }),
   userWordId: uuid('user_word_id')

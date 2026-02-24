@@ -4,11 +4,13 @@ import { and, eq, sql } from 'drizzle-orm';
 
 import db from '@/drizzle';
 import { userLevelProgress, userProgress, userWords, words } from '@/drizzle/schema';
+import { JlptLevelEnum } from '@/drizzle/schema/enums';
 
 const INITIAL_WORDS_COUNT = 10;
 
 export const initializeUserProgress = async (userId: string): Promise<void> => {
   await db.transaction(async tx => {
+    // Create user progress record
     await tx.insert(userProgress).values({
       userId,
       currentActiveLevel: 'N5',
@@ -19,6 +21,7 @@ export const initializeUserProgress = async (userId: string): Promise<void> => {
       .from(words)
       .where(eq(words.level, 'N5'));
 
+    // Create N5 level progress (active)
     await tx.insert(userLevelProgress).values({
       userId,
       level: 'N5',
@@ -27,6 +30,23 @@ export const initializeUserProgress = async (userId: string): Promise<void> => {
       startedAt: new Date(),
     });
 
+    // Create locked entries for N4, N3, N2, N1
+    const levelsToCreate: JlptLevelEnum[] = ['N4', 'N3', 'N2', 'N1'];
+    for (const level of levelsToCreate) {
+      const [levelWordCount] = await tx
+        .select({ count: sql<number>`count(*)` })
+        .from(words)
+        .where(eq(words.level, level));
+
+      await tx.insert(userLevelProgress).values({
+        userId,
+        level,
+        status: 'locked',
+        totalWordsInLevel: Number(levelWordCount.count),
+      });
+    }
+
+    // Add initial 10 N5 words
     const initialWords = await tx
       .select()
       .from(words)

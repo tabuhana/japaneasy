@@ -1,4 +1,4 @@
-import { index, integer, pgTable, real, timestamp, unique, uuid } from 'drizzle-orm/pg-core';
+import { index, integer, pgTable, real, text, timestamp, unique, uuid } from 'drizzle-orm/pg-core';
 
 import { user } from './auth-schema';
 import { cardStatusEnum, jlptLevelEnum } from './enums';
@@ -8,7 +8,7 @@ export const userWords = pgTable(
   'user_words',
   {
     id: uuid('id').defaultRandom().primaryKey(),
-    userId: uuid('user_id')
+    userId: text('user_id')
       .notNull()
       .references(() => user.id, { onDelete: 'cascade' }),
     wordId: uuid('word_id')

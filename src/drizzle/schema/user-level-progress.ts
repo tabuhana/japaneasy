@@ -1,4 +1,4 @@
-import { index, integer, pgTable, timestamp, unique, uuid } from 'drizzle-orm/pg-core';
+import { index, integer, pgTable, text, timestamp, unique, uuid } from 'drizzle-orm/pg-core';
 
 import { jlptLevelEnum, levelStatusEnum } from './enums';
 import { userProgress } from './user-progress';
@@ -7,7 +7,7 @@ export const userLevelProgress = pgTable(
   'user_level_progress',
   {
     id: uuid('id').defaultRandom().primaryKey(),
-    userId: uuid('user_id')
+    userId: text('user_id')
       .notNull()
       .references(() => userProgress.userId, { onDelete: 'cascade' }),
     level: jlptLevelEnum('level').notNull(),
