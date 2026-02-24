@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-import { SigninForm } from '../../components/signin-form';
+import { SigninForm } from '../components/signin-form';
 
 export default function SignInPage() {
   return (
