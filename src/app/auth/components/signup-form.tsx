@@ -64,7 +64,7 @@ export function SignupForm() {
           setError(progressResult.message);
           return;
         }
-        router.push('/dashboard');
+        router.push('/');
       } else {
         setError(result.message);
       }
