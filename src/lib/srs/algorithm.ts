@@ -2,14 +2,14 @@ import { SRS_CONFIG } from './constants';
 
 type CardStatus = 'new' | 'learning' | 'reviewing' | 'mastered';
 
-interface SRSCard {
+type SRSCard = {
   status: CardStatus;
   interval: number;
   repetitions: number;
   easeFactor: number;
 }
 
-interface SRSResult {
+type SRSResult = {
   newStatus: CardStatus;
   newInterval: number;
   newRepetitions: number;
