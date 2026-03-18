@@ -13,6 +13,7 @@ export const insertUserLevelProgress = async (data: {
   level: JlptLevelEnum;
   status: 'locked' | 'active' | 'completed';
   totalWordsInLevel: number;
+  totalGroupsInLevel?: number;
   startedAt?: Date;
 }) => {
   await db.insert(userLevelProgress).values(data);
@@ -76,6 +77,20 @@ export const activateLevelProgress = async (userId: string, level: JlptLevelEnum
       status: 'active',
       startedAt: new Date(),
     })
+    .where(and(eq(userLevelProgress.userId, userId), eq(userLevelProgress.level, level)));
+};
+
+/**
+ * Update current group for a level
+ */
+export const updateCurrentGroup = async (
+  userId: string,
+  level: JlptLevelEnum,
+  newGroup: number
+) => {
+  await db
+    .update(userLevelProgress)
+    .set({ currentGroup: newGroup })
     .where(and(eq(userLevelProgress.userId, userId), eq(userLevelProgress.level, level)));
 };
 

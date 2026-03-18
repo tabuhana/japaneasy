@@ -1,8 +1,9 @@
-import { eq } from 'drizzle-orm';
+import { and, eq, inArray } from 'drizzle-orm';
 
 import db from '@/drizzle';
 import { userWords } from '@/drizzle/schema';
 import { JlptLevelEnum } from '@/drizzle/schema/enums';
+import { SRS_CONFIG } from '@/lib/srs/constants';
 
 type CardStatus = 'new' | 'learning' | 'reviewing' | 'mastered';
 
@@ -47,6 +48,22 @@ export const updateUserWord = async (
       updatedAt: new Date(),
     })
     .where(eq(userWords.id, userWordId));
+};
+
+/**
+ * Batch update cards from 'new' to 'learning' after learn session
+ */
+export const batchUpdateToLearning = async (userWordIds: string[], userId: string) => {
+  await db
+    .update(userWords)
+    .set({
+      status: 'learning',
+      interval: SRS_CONFIG.LEARNING_INTERVALS[0],
+      repetitions: 0,
+      nextReviewDate: new Date(),
+      updatedAt: new Date(),
+    })
+    .where(and(inArray(userWords.id, userWordIds), eq(userWords.userId, userId)));
 };
 
 /**

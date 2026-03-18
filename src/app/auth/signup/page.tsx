@@ -103,6 +103,7 @@ export default function SignUpPage() {
                 <Input
                   id='password'
                   type={showPassword ? 'text' : 'password'}
+                  autoComplete='off'
                   required
                   {...field}
                 />
@@ -131,6 +132,7 @@ export default function SignUpPage() {
                 <Input
                   id='confirmPassword'
                   type={showConfirmPassword ? 'text' : 'password'}
+                  autoComplete='off'
                   required
                   {...field}
                 />

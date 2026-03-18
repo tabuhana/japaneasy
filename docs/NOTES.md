@@ -68,3 +68,20 @@ Reading
 ・One is able to read and understand typical expressions and sentences written in hiragana, katakana, and basic kanji.
 Listening
 ・One is able to listen and comprehend conversations about topics regularly encountered in daily life and classroom situations, and is able to pick up necessary information from short conversations spoken slowly.
+
+
+### Random notes
+
+I want to pass the unit cards the entire level. The level includes all the groups and the groups include their own words. The groups are the progress Items and the level should show how many groups the useer completed, basically just 10/20 groups completed sho it would be like 50%.
+
+N5  6 groups - 120 words per group
+N4  6 groups - 112 words per group
+N3  12 groups - 180 words per group
+N2  12 groups - 146 words per group
+N1  12 groups - 225 words per group
+
+
+Next to do:
+Hiragana and katakana quiz
+Admin pannel
+Change unit cards to show word progress instead of by groups

@@ -4,11 +4,9 @@ import csv from 'csv-parser';
 import { config } from 'dotenv';
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
+import { toRomaji } from 'wanakana';
 
 import * as schema from '@/drizzle/schema/index';
-
-import { kanaToRomaji } from './hiragana-to-romaji';
-import { levelMapper } from './levelmapper';
 
 config({ path: '.env' });
 
@@ -20,7 +18,7 @@ const db = drizzle(sql, { schema });
 function readCSVData(): Promise<any[]> {
   return new Promise((resolve, reject) => {
     const results: any[] = [];
-    const csvPath = join(__dirname, 'all.csv');
+    const csvPath = join(__dirname, 'japaneasy_words.csv');
 
     createReadStream(csvPath)
       .pipe(csv())
@@ -30,6 +28,7 @@ function readCSVData(): Promise<any[]> {
           hiragana: data.reading,
           english: data.meaning,
           level: data.tags,
+          group: data.group,
         });
       })
       .on('end', () => {
@@ -51,9 +50,10 @@ async function seed() {
     const first = kanjiData[0];
     console.log('kanji:', first.kanji);
     console.log('hiragana:', first.hiragana);
-    console.log('romaji:', kanaToRomaji(first.hiragana));
+    console.log('romaji:', toRomaji(first.hiragana));
     console.log('english:', first.english);
-    console.log('level:', levelMapper(first.level));
+    console.log('level:', first.level);
+    console.log('group:', first.group);
 
     // Clear existing data (optional)
     await db.delete(schema.words);
@@ -66,9 +66,10 @@ async function seed() {
         kanjiData.map(entry => ({
           kanji: entry.kanji,
           kana: entry.hiragana,
-          romaji: kanaToRomaji(entry.hiragana),
+          romaji: toRomaji(entry.hiragana),
           english: entry.english,
-          level: levelMapper(entry.level),
+          level: entry.level as 'N5' | 'N4' | 'N3' | 'N2' | 'N1',
+          wordGroup: parseInt(entry.group.split('_').pop()!),
         }))
       )
       .returning();

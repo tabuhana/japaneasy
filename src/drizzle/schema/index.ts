@@ -3,5 +3,4 @@ export * from './enums';
 export * from './user-progress';
 export * from './word';
 export * from './user-word';
-export * from './user-level-progress';
 export * from './review';

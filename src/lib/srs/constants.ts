@@ -21,4 +21,7 @@ export const SRS_CONFIG = {
   // New word addition threshold
   ACCURACY_THRESHOLD: 0.8, // 80%
   NEW_WORDS_BATCH_SIZE: 5,
+
+  // Group advancement threshold (80% of group words at reviewing/mastered)
+  GROUP_ADVANCE_THRESHOLD: 0.8,
 } as const;

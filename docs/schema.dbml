@@ -1,0 +1,203 @@
+// ──────────────────────────────────────
+// Enums
+// ──────────────────────────────────────
+
+Enum jlpt_level {
+  N5
+  N4
+  N3
+  N2
+  N1
+}
+
+Enum level_status {
+  locked
+  active
+  completed
+}
+
+Enum card_status {
+  new
+  learning
+  reviewing
+  mastered
+}
+
+// ──────────────────────────────────────
+// Better Auth tables
+// ──────────────────────────────────────
+
+Table user {
+  id text [pk]
+  name text [not null]
+  email text [not null, unique]
+  email_verified boolean [not null, default: false]
+  created_at timestamp [not null, default: `now()`]
+  updated_at timestamp [not null, default: `now()`]
+}
+
+Table session {
+  id text [pk]
+  expires_at timestamp [not null]
+  token text [not null, unique]
+  created_at timestamp [not null, default: `now()`]
+  updated_at timestamp [not null, default: `now()`]
+  ip_address text
+  user_agent text
+  user_id text [not null]
+
+  indexes {
+    user_id [name: 'session_userId_idx']
+  }
+}
+
+Table account {
+  id text [pk]
+  account_id text [not null]
+  provider_id text [not null]
+  user_id text [not null]
+  access_token text
+  refresh_token text
+  id_token text
+  access_token_expires_at timestamp
+  refresh_token_expires_at timestamp
+  scope text
+  password text
+  created_at timestamp [not null, default: `now()`]
+  updated_at timestamp [not null, default: `now()`]
+
+  indexes {
+    user_id [name: 'account_userId_idx']
+  }
+}
+
+Table verification {
+  id text [pk]
+  identifier text [not null]
+  value text [not null]
+  expires_at timestamp [not null]
+  created_at timestamp [not null, default: `now()`]
+  updated_at timestamp [not null, default: `now()`]
+
+  indexes {
+    identifier [name: 'verification_identifier_idx']
+  }
+}
+
+// ──────────────────────────────────────
+// Application tables
+// ──────────────────────────────────────
+
+Table words {
+  id uuid [pk, default: `gen_random_uuid()`]
+  kanji varchar(100)
+  kana varchar(100)
+  romaji varchar(100)
+  english text
+  level jlpt_level
+  word_group integer
+  created_at timestamp [not null, default: `now()`]
+
+  indexes {
+    level [name: 'idx_words_level']
+    (level, word_group) [name: 'idx_words_level_group']
+  }
+}
+
+Table user_progress {
+  user_id text [pk]
+  current_active_level jlpt_level [not null, default: 'N5']
+  streak_count integer [not null, default: 0]
+  created_at timestamp [not null, default: `now()`]
+  updated_at timestamp [not null, default: `now()`]
+}
+
+Table user_level_progress {
+  id uuid [pk, default: `gen_random_uuid()`]
+  user_id text [not null]
+  level jlpt_level [not null]
+  status level_status [not null, default: 'locked']
+  total_words_in_level integer [not null]
+  words_mastered_count integer [not null, default: 0]
+  started_at timestamp
+  completed_at timestamp
+  created_at timestamp [not null, default: `now()`]
+
+  indexes {
+    (user_id, level) [unique, name: 'unique_user_level']
+    (user_id, status) [name: 'idx_userlevel_user_status']
+  }
+}
+
+Table user_group_progress {
+  id uuid [pk, default: `gen_random_uuid()`]
+  user_level_progress_id uuid [not null]
+  group_number integer [not null]
+  status level_status [not null, default: 'locked']
+  total_words integer [not null]
+  words_added integer [not null, default: 0]
+  words_completed integer [not null, default: 0]
+
+  indexes {
+    (user_level_progress_id, group_number) [unique, name: 'unique_user_level_group']
+  }
+}
+
+Table user_words {
+  id uuid [pk, default: `gen_random_uuid()`]
+  user_id text [not null]
+  word_id uuid [not null]
+  status card_status [not null, default: 'new']
+  ease_factor real [not null, default: 2.5]
+  interval integer [not null, default: 0]
+  repetitions integer [not null, default: 0]
+  next_review_date timestamp [not null]
+  times_correct integer [not null, default: 0]
+  times_incorrect integer [not null, default: 0]
+  last_reviewed_at timestamp
+  from_level jlpt_level [not null]
+  added_at timestamp [not null, default: `now()`]
+  created_at timestamp [not null, default: `now()`]
+  updated_at timestamp [not null, default: `now()`]
+
+  indexes {
+    (user_id, word_id) [unique, name: 'unique_user_word']
+    (user_id, next_review_date) [name: 'idx_userwords_user_nextreview']
+    (user_id, status) [name: 'idx_userwords_user_status']
+  }
+}
+
+Table reviews {
+  id uuid [pk, default: `gen_random_uuid()`]
+  user_id text [not null]
+  user_word_id uuid [not null]
+  was_correct boolean [not null]
+  previous_interval integer [not null]
+  new_interval integer [not null]
+  previous_status card_status [not null]
+  new_status card_status [not null]
+  time_spent integer
+  reviewed_at timestamp [not null, default: `now()`]
+
+  indexes {
+    (user_id, reviewed_at) [name: 'idx_reviews_user_reviewedat']
+    (user_word_id, reviewed_at) [name: 'idx_reviews_userword_reviewedat']
+  }
+}
+
+// ──────────────────────────────────────
+// References (foreign keys)
+// ──────────────────────────────────────
+
+Ref: session.user_id > user.id [delete: cascade]
+Ref: account.user_id > user.id [delete: cascade]
+
+Ref: user_progress.user_id > user.id [delete: cascade]
+Ref: user_level_progress.user_id > user_progress.user_id [delete: cascade]
+Ref: user_group_progress.user_level_progress_id > user_level_progress.id [delete: cascade]
+
+Ref: user_words.user_id > user.id [delete: cascade]
+Ref: user_words.word_id > words.id [delete: cascade]
+
+Ref: reviews.user_id > user_progress.user_id [delete: cascade]
+Ref: reviews.user_word_id > user_words.id [delete: cascade]

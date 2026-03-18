@@ -11,4 +11,4 @@ export * from './user-word-mutations';
 export * from './review-mutations';
 
 // User Mutations
-export * from './user-mutations';
+export * from './user-initialization';

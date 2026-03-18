@@ -46,7 +46,6 @@ export default function SignInPage() {
     startTransition(async () => {
       const result = await handleSignIn(data);
 
-      console.log(result);
       if (result.success) {
         router.push('/');
       } else {

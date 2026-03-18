@@ -1,6 +1,7 @@
 'use server';
 
 import { headers } from 'next/headers';
+import { initializeUserProgress } from '@/server/mutations/user-initialization';
 
 import { auth } from '@/lib/auth';
 import { ActionResponse } from '@/lib/types';
@@ -29,13 +30,14 @@ export const handleSignUp = async (values: {
   password: string;
 }): Promise<ActionResponse> => {
   try {
-    await auth.api.signUpEmail({
+    const { user } = await auth.api.signUpEmail({
       body: {
         name: '',
         email: values.email,
         password: values.password,
       },
     });
+    await initializeUserProgress(user.id);
     return { success: true, message: 'Account created successfully' };
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Failed to create account';
