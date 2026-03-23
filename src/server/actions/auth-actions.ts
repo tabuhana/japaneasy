@@ -1,7 +1,7 @@
 'use server';
 
 import { headers } from 'next/headers';
-import { initializeUserProgress } from '@/server/mutations/user-initialization';
+import { initializeUserProgress } from '@/server/mutations';
 
 import { auth } from '@/lib/auth';
 import { ActionResponse } from '@/lib/types';

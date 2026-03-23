@@ -1,0 +1,716 @@
+expression,reading,meaning,tags,parts_of_speech,group
+そう; そうです,そう; そうです,"yes; appears, to be the case",N5,noun,Basic Greetings
+いいえ,いいえ,"no, not at all",N5,expression,Basic Greetings
+ええ,ええ,yes,N5,expression,Basic Greetings
+下さい,ください,(with te-form verb) please do for me,N5,expression,Basic Greetings
+さあ,さあ,"come now, well",N5,expression,Basic Greetings
+どうぞ,どうぞ,"please, kindly, by all means",N5,expression,Basic Greetings
+どうも,どうも,Thank you; somehow; no matter how hard one may try,N5,expression,Basic Greetings
+はい,はい,yes,N5,expression,Basic Greetings
+もしもし,もしもし,Hello? (used on the phone),N5,expression,Basic Greetings
+あなた,あなた,you,N5,noun,Everyday Essentials
+私,わたし,"I, myself",N5,noun,Everyday Essentials
+私,わたくし,"I (formal), myself, private affairs",N5,noun,Everyday Essentials
+この,この,this,N5,noun,Everyday Essentials
+その,その,that,N5,noun,Everyday Essentials
+あの,あの,"that over there; like that, that way; um...",N5,noun,Everyday Essentials
+ここ,ここ,"here, this place",N5,noun,Everyday Essentials
+そこ,そこ,"that place, there; bottom, sole",N5,noun,Everyday Essentials
+あそこ,あそこ,"there, over there, that place",N5,noun,Everyday Essentials
+こちら,こちら,this person (polite); this way (polite),N5,na-adjective,Everyday Essentials
+こっち,こっち,this person; this direction; this side,N5,noun,Everyday Essentials
+そっち,そっち,over there,N5,noun,Everyday Essentials
+あっち,あっち,over there,N5,noun,Everyday Essentials
+どこ,どこ,"where, what place",N5,noun,Everyday Essentials
+どっち,どっち,"which one, which way",N5,noun,Everyday Essentials
+どちら,どちら,which (one) (way); where (polite),N5,na-adjective,Everyday Essentials
+何,なん; なに,what,N5,noun,Everyday Essentials
+いくつ,いくつ,"how many, how old",N5,noun,Everyday Essentials
+いつ,いつ,when,N5,noun,Everyday Essentials
+誰,だれ,who,N5,noun,Everyday Essentials
+どなた,どなた,who,N5,noun,Everyday Essentials
+どの,どの,which,N5,noun,Everyday Essentials
+何～,なん～,what sort of ~,N5,prefix/suffix,Everyday Essentials
+少し,すこし,"little, few",N5,noun,Everyday Essentials
+全部,ぜんぶ,"all, entire, whole",N5,noun,Everyday Essentials
+行く,いく; ゆく,to go,N5,verb,Everyday Essentials
+来る,くる,to come,N5,verb,Everyday Essentials
+在る; 有る,ある,"to be, to have",N5,verb,Everyday Essentials
+居る,いる,"(humble) to be (animate), to exist",N5,verb,Everyday Essentials
+要る,いる,to need,N5,verb,Everyday Essentials
+出来る,できる,to be able to (to accomplish),N5,verb,Everyday Essentials
+使う,つかう,to use,N5,verb,Everyday Essentials
+見る,みる,"to see, to look",N5,verb,Everyday Essentials
+会う,あう,"to meet, to see",N5,verb,Everyday Essentials
+待つ,まつ,to wait,N5,verb,Everyday Essentials
+飲む,のむ,to drink,N5,verb,Everyday Essentials
+食べる,たべる,to eat,N5,verb,Everyday Essentials
+寝る,ねる,to sleep; to go to sleep; to go to bed,N5,verb,Everyday Essentials
+起きる,おきる,"to get up (e.g., from sleeping); to happen",N5,verb,Everyday Essentials
+生まれる,うまれる,to be born,N5,verb,Everyday Essentials
+死ぬ,しぬ,to die,N5,verb,Everyday Essentials
+住む,すむ,"to reside, to live in",N5,verb,Everyday Essentials
+知る,しる,"to know, to understand",N5,verb,Everyday Essentials
+分かる,わかる,to understand,N5,verb,Everyday Essentials
+忘れる,わすれる,to forget,N5,verb,Everyday Essentials
+覚える,おぼえる,"to learn, to commit to memory, to remember, to memorize",N5,verb,Everyday Essentials
+借りる,かりる,"to borrow, to owe",N5,verb,Everyday Essentials
+貸す,かす,to lend,N5,verb,Everyday Essentials
+返す,かえす,to return something,N5,verb,Everyday Essentials
+止まる,とまる,to come to a halt,N5,verb,Everyday Essentials
+降りる,おりる,to get off,N5,verb,Everyday Essentials
+洗う,あらう,to wash,N5,verb,Everyday Essentials
+コピーする,コピーする,to copy,N5,verb,Everyday Essentials
+結婚,けっこん (する),marriage (get married),N5,noun,Everyday Essentials
+名前,なまえ,name,N5,noun,Everyday Essentials
+紙,かみ,paper,N5,noun,Everyday Essentials
+辞書,じしょ,dictionary,N5,noun,Everyday Essentials
+字引,じびき,dictionary,N5,noun,Everyday Essentials
+カメラ,カメラ,camera,N5,noun,Everyday Essentials
+水,みず,water,N5,noun,Everyday Essentials
+男,おとこ,"man, male",N5,noun,Everyday Essentials
+女,おんな,"woman, female",N5,noun,Everyday Essentials
+男の子,おとこのこ,boy,N5,noun,Everyday Essentials
+女の子,おんなのこ,girl,N5,noun,Everyday Essentials
+方,かた,-- honorific form for 人 (ひと) --; way of doing,N5,verb,Everyday Essentials
+友達,ともだち,friend,N5,noun,Everyday Essentials
+動物,どうぶつ,animal,N5,noun,Everyday Essentials
+ペット,ペット,pet,N5,noun,Everyday Essentials
+問題,もんだい,a problem,N5,noun,Everyday Essentials
+大使館,たいしかん,embassy,N5,noun,Everyday Essentials
+交番,こうばん,police box,N5,noun,Everyday Essentials
+たばこ,たばこ,"tobacco, cigarettes",N5,noun,Everyday Essentials
+テープ,テープ,tape,N5,noun,Everyday Essentials
+ページ,ページ,a page,N5,noun,Everyday Essentials
+箱,はこ,box,N5,noun,Everyday Essentials
+封筒,ふうとう,envelope,N5,noun,Everyday Essentials
+葉書,はがき,postcard,N5,noun,Everyday Essentials
+ポケット,ポケット,pocket,N5,noun,Everyday Essentials
+門,もん,gate,N5,noun,Everyday Essentials
+横,よこ,beside; side; width,N5,noun,Everyday Essentials
+外,そと,"outside, exterior",N5,noun,Everyday Essentials
+外,ほか,"other, the rest",N5,noun,Everyday Essentials
+中,なか,"inside, middle, among",N5,noun,Everyday Essentials
+上,うえ,"above (up, top, etc.), over, on top of",N5,noun,Everyday Essentials
+下,した,"under, below, beneath",N5,noun,Everyday Essentials
+前,まえ,"before, in front",N5,noun,Everyday Essentials
+後,あと,afterwards (later); in the future; the rest; since then,N5,noun,Everyday Essentials
+次,つぎ,next,N5,noun,Everyday Essentials
+所,ところ,place,N5,noun,Everyday Essentials
+辺,へん,"area, vicinity",N5,noun,Everyday Essentials
+向こう,むこう,"beyond, over there",N5,noun,Everyday Essentials
+キロ; キログラム,キロ; キログラム,(abbr.) kilo (kilogram),N5,noun,Everyday Essentials
+キロ; キロメートル,キロ; キロメートル,(abbr.) kilo (kilometer),N5,noun,Everyday Essentials
+グラム,グラム,gram,N5,noun,Everyday Essentials
+メートル,メートル,meter,N5,noun,Everyday Essentials
+～円,～えん,Yen,N5,prefix/suffix,Everyday Essentials
+～側,～がわ,~ side,N5,prefix/suffix,Everyday Essentials
+～さん,～さん,"Mr. ~, Ms. ~",N5,prefix/suffix,Everyday Essentials
+～すぎ,～すぎ,"past; to exceed, ~ too much",N5,prefix/suffix,Everyday Essentials
+～だけ,～だけ,"only ~, just ~, as ~",N5,prefix/suffix,Everyday Essentials
+～番,～ばん,~st; ~th best,N5,prefix/suffix,Everyday Essentials
+～前,～まえ,in front of ~,N5,prefix/suffix,Everyday Essentials
+お～,お～,honorable ~ (honorific),N5,prefix/suffix,Everyday Essentials
+じゃ; じゃあ,じゃ; じゃあ,"well, well then",N5,noun,Everyday Essentials
+では,では,"then, well, so",N5,noun,Everyday Essentials
+ああ,ああ,"Ah!, Oh!",N5,expression,Everyday Essentials
+いい; よい,いい; よい,good,N5,i-adjective,Everyday Essentials
+多い,おおい,many; there are a lot,N5,i-adjective,Everyday Essentials
+少ない,すくない,a little; a few,N5,i-adjective,Everyday Essentials
+ない,ない,"there isn't, doesn't have",N5,i-adjective,Everyday Essentials
+難しい,むずかしい,difficult,N5,i-adjective,Everyday Essentials
+悪い,わるい,"bad, sinful; inferior",N5,i-adjective,Everyday Essentials
+うるさい,うるさい,noisy; annoying,N5,i-adjective,Everyday Essentials
+有名,ゆうめい,famous,N5,na-adjective,Everyday Essentials
+余り,あまり,not very; surplus,N5,adverb,Everyday Essentials
+しかし,しかし,however; but,N5,adverb,Everyday Essentials
+でも,でも,"but, however",N5,adverb,Everyday Essentials
+丁度,ちょうど,"just, right, exactly",N5,adverb,Everyday Essentials
+もっと,もっと,more,N5,noun,Everyday Essentials
+一,いち,one,N5,noun,Numbers & Counting
+二,に,two,N5,noun,Numbers & Counting
+三,さん,three,N5,noun,Numbers & Counting
+四,し,four,N5,noun,Numbers & Counting
+五,ご,five,N5,noun,Numbers & Counting
+六,ろく,six,N5,noun,Numbers & Counting
+七,しち,seven,N5,noun,Numbers & Counting
+八,はち,eight,N5,noun,Numbers & Counting
+九,きゅう,nine,N5,noun,Numbers & Counting
+九,く,nine,N5,noun,Numbers & Counting
+十,じゅう,ten,N5,noun,Numbers & Counting
+十,(〜を) とお,ten (~),N5,noun,Numbers & Counting
+二十歳,はたち,20 years old,N5,noun,Numbers & Counting
+百,ひゃく,hundred,N5,noun,Numbers & Counting
+千,せん,thousand,N5,noun,Numbers & Counting
+万,まん,ten thousand,N5,noun,Numbers & Counting
+ゼロ,ゼロ,zero,N5,noun,Numbers & Counting
+零,れい,"zero, nought",N5,noun,Numbers & Counting
+これ,これ,this one,N5,noun,Numbers & Counting
+それ,それ,that one,N5,noun,Numbers & Counting
+あれ,あれ,that one (over there),N5,noun,Numbers & Counting
+どれ,どれ,which one,N5,noun,Numbers & Counting
+誰か,だれか,someone,N5,noun,Numbers & Counting
+一番,いちばん,"best (most), first, number one",N5,noun,Numbers & Counting
+一緒,いっしょ,together,N5,noun,Numbers & Counting
+大勢,おおぜい,great number of people,N5,noun,Numbers & Counting
+背,せい,"(one's) height, stature",N5,noun,Numbers & Counting
+たて,たて,"length, height",N5,noun,Numbers & Counting
+番号,ばんごう,"number, series of digits",N5,noun,Numbers & Counting
+半,はん,"half (e.g., にじはん | half-past two)",N5,noun,Numbers & Counting
+半分,はんぶん,half,N5,noun,Numbers & Counting
+一つ,ひとつ,one thing,N5,noun,Numbers & Counting
+二つ,ふたつ,two things,N5,noun,Numbers & Counting
+三つ,みっつ,three things,N5,noun,Numbers & Counting
+四つ,よっつ,four things,N5,noun,Numbers & Counting
+五つ,いつつ,five things,N5,noun,Numbers & Counting
+六つ,むっつ,six things,N5,noun,Numbers & Counting
+七つ,ななつ,seven things,N5,noun,Numbers & Counting
+八つ,やっつ,eight things,N5,noun,Numbers & Counting
+九つ,ここのつ,nine things,N5,noun,Numbers & Counting
+一人,ひとり,one person,N5,noun,Numbers & Counting
+二人,ふたり,two people,N5,noun,Numbers & Counting
+一人,ひとり,one person,N5,noun,Numbers & Counting
+大勢,おおぜい,great number of people,N5,noun,Numbers & Counting
+かかる,かかる,"it takes (amount of time, money) (v.i.)",N5,noun,Numbers & Counting
+呼ぶ,よぶ,to call (one's name); to invite,N5,verb,Numbers & Counting
+丸い; 円い,まるい,"round, circular",N5,i-adjective,Numbers & Counting
+よく,よく,"frequently, often (much); well, skillfully",N5,na-adjective,Numbers & Counting
+どちら,どちら,which (one) (way); where (polite),N5,na-adjective,Numbers & Counting
+皆さん,みなさん,"all of you, everyone",N5,adverb,Numbers & Counting
+みんな,みんな,"all, everyone, everybody",N5,adverb,Numbers & Counting
+～回,～かい,counter for occurrences (~ times),N5,counter,Numbers & Counting
+～冊,～さつ,counter for books,N5,counter,Numbers & Counting
+～人,～じん,counter for people,N5,counter,Numbers & Counting
+～台,～だい,counter for vehicles; machines,N5,counter,Numbers & Counting
+～度,～ど,counter for occurrences; ~ degree; ~ point,N5,counter,Numbers & Counting
+～人,～にん,counter for people,N5,counter,Numbers & Counting
+～杯,～はい,counter for cupfuls,N5,counter,Numbers & Counting
+～匹,～ひき,counter for small animals,N5,counter,Numbers & Counting
+～くらい; ぐらい,～くらい; ぐらい,approximate (quantity),N5,prefix/suffix,Numbers & Counting
+朝,あさ,morning,N5,noun,Time & Dates
+今,いま,now,N5,noun,Time & Dates
+明日,あした,tomorrow,N5,noun,Time & Dates
+昨日,きのう,yesterday,N5,noun,Time & Dates
+今日,きょう,"today, this day",N5,noun,Time & Dates
+明後日,あさって,day after tomorrow,N5,noun,Time & Dates
+一昨日,おととい,the day before yesterday,N5,noun,Time & Dates
+おととし,おととし,year before last,N5,noun,Time & Dates
+さ来年,さらいねん,year after next,N5,noun,Time & Dates
+去年,きょねん,last year,N5,noun,Time & Dates
+今年,ことし,this year,N5,noun,Time & Dates
+来年,らいねん,next year,N5,noun,Time & Dates
+今月,こんげつ,this month,N5,noun,Time & Dates
+先月,せんげつ,last month,N5,noun,Time & Dates
+来月,らいげつ,next month,N5,noun,Time & Dates
+今週,こんしゅう,this week,N5,noun,Time & Dates
+先週,せんしゅう,last week,N5,noun,Time & Dates
+来週,らいしゅう,next week,N5,noun,Time & Dates
+今朝,けさ,this morning,N5,noun,Time & Dates
+夕方,ゆうがた,"late afternoon (typically just before dinner time), evening",N5,noun,Time & Dates
+今晩,こんばん,"tonight, this evening",N5,noun,Time & Dates
+昼,ひる,"noon, daytime",N5,noun,Time & Dates
+夜,よる,"evening, night",N5,noun,Time & Dates
+晩,ばん,evening,N5,noun,Time & Dates
+誕生日,たんじょうび,birthday,N5,noun,Time & Dates
+休み,やすみ,holiday; day off; absence,N5,noun,Time & Dates
+時間,じかん,time,N5,noun,Time & Dates
+時計,とけい,a watch; a clock,N5,noun,Time & Dates
+年,とし,"year, age",N5,noun,Time & Dates
+月曜日,げつようび,Monday,N5,noun,Time & Dates
+火曜日,かようび,Tuesday,N5,noun,Time & Dates
+水曜日,すいようび,Wednesday,N5,noun,Time & Dates
+木曜日,もくようび,Thursday,N5,noun,Time & Dates
+金曜日,きんようび,Friday,N5,noun,Time & Dates
+土曜日,どようび,Saturday,N5,noun,Time & Dates
+日曜日,にちようび,Sunday,N5,noun,Time & Dates
+五日,いつか,five days; fifth day of the month,N5,noun,Time & Dates
+九日,ここのか,nine days; ninth day of the month,N5,noun,Time & Dates
+十日,とおか,ten days; tenth day of the month,N5,noun,Time & Dates
+七日,なのか,seven days; seventh day (of the month),N5,noun,Time & Dates
+二十日,はつか,"twenty days, twentieth (day of the month)",N5,noun,Time & Dates
+一日,ついたち,one day; first day of the month,N5,noun,Time & Dates
+二日,ふつか,two days; second day of the month,N5,noun,Time & Dates
+三日,みっか,"three days, third day of the month",N5,noun,Time & Dates
+四日,よっか,four days; fourth day of the month,N5,noun,Time & Dates
+六日,むいか,six days; sixth day of month,N5,noun,Time & Dates
+八日,ようか,eight days; eighth day of the month,N5,noun,Time & Dates
+先,さき,"future; recent, previous",N5,noun,Time & Dates
+それから,それから,"and then, after that",N5,noun,Time & Dates
+自分,じぶん,"myself, oneself",N5,noun,Time & Dates
+隣,となり,"next to, next door to",N5,noun,Time & Dates
+初めて,はじめて,for the first time,N5,noun,Time & Dates
+消す,けす,"to erase, to delete, to turn off power",N5,verb,Time & Dates
+休む,やすむ,"to rest, to have a break, to get time off",N5,verb,Time & Dates
+忙しい,いそがしい,"busy (people, days)",N5,i-adjective,Time & Dates
+早い,はやい,early,N5,i-adjective,Time & Dates
+暇,ひま,"free time, leisure",N5,na-adjective,Time & Dates
+結構,けっこう,"splendid; enough, tolerably",N5,na-adjective,Time & Dates
+いつも,いつも,"always, usually, every time, never (with neg. verb)",N5,adverb,Time & Dates
+すぐに,すぐに,"immediately, soon",N5,adverb,Time & Dates
+多分,たぶん,"perhaps, probably, maybe",N5,adverb,Time & Dates
+時々,ときどき,sometimes,N5,adverb,Time & Dates
+毎朝,まいあさ,every morning,N5,adverb,Time & Dates
+毎日,まいにち,every day,N5,adverb,Time & Dates
+毎週,まいしゅう,every week,N5,adverb,Time & Dates
+毎月,まいげつ; まいつき,"every month, monthly",N5,adverb,Time & Dates
+毎年,まいねん; まいとし,"every year, yearly, annually",N5,adverb,Time & Dates
+毎晩,まいばん,every night,N5,adverb,Time & Dates
+まだ,まだ,"yet, still, besides",N5,adverb,Time & Dates
+もう,もう,already; again; more,N5,adverb,Time & Dates
+～か月,～かげつ,(number of) months,N5,prefix/suffix,Time & Dates
+～月,～がつ,month of year,N5,prefix/suffix,Time & Dates
+～ころ; ～ごろ,～ころ; ～ごろ,"about, toward, approximately (time)",N5,prefix/suffix,Time & Dates
+～歳,～さい,~ years old,N5,prefix/suffix,Time & Dates
+～時,～じ,~ o'clock (time),N5,prefix/suffix,Time & Dates
+～時間,～じかん,~ hours,N5,prefix/suffix,Time & Dates
+～中,～じゅう,"during, while",N5,prefix/suffix,Time & Dates
+～週間,～しゅうかん,~ weeks,N5,prefix/suffix,Time & Dates
+～ずつ,～ずつ,at a time,N5,prefix/suffix,Time & Dates
+～中,～ちゅう,"during, while ~ing",N5,prefix/suffix,Time & Dates
+～時,～とき,at the time of ~,N5,prefix/suffix,Time & Dates
+～など,～など,et cetera,N5,prefix/suffix,Time & Dates
+～日,～にち,"~ day of the month, for ~ days",N5,prefix/suffix,Time & Dates
+～年,～ねん,~ years,N5,prefix/suffix,Time & Dates
+～分,～ふん,~ minutes,N5,prefix/suffix,Time & Dates
+お母さん,おかあさん,mother (formal),N5,noun,Family & Relationships
+お父さん,おとうさん,father (formal),N5,noun,Family & Relationships
+お兄さん,おにいさん,(someone else's) older brother (formal),N5,noun,Family & Relationships
+お姉さん,おねえさん,older sister (formal),N5,noun,Family & Relationships
+伯父; 叔父さん,おじさん,"uncle, middle-aged man",N5,noun,Family & Relationships
+伯母さん; 叔母さん,おばさん,aunt,N5,noun,Family & Relationships
+おじいさん,おじいさん,"grandfather, male senior citizen",N5,na-adjective,Family & Relationships
+おばあさん,おばあさん,"grandmother, female senior-citizen",N5,na-adjective,Family & Relationships
+奥さん,おくさん,(someone else's) wife (hon.),N5,verb,Family & Relationships
+家族,かぞく,"family, members of a family",N5,noun,Family & Relationships
+両親,りょうしん,"parents (lit., both parents)",N5,noun,Family & Relationships
+子供,こども,child(ren),N5,noun,Family & Relationships
+大人,おとな,adult,N5,noun,Family & Relationships
+兄,あに,(my) older brother (humble),N5,verb,Family & Relationships
+弟,おとうと,younger brother,N5,noun,Family & Relationships
+姉,あね,(my) older sister (humble),N5,verb,Family & Relationships
+妹,いもうと,younger sister (humble),N5,verb,Family & Relationships
+兄弟,きょうだい,"siblings (humble), brothers and sisters",N5,verb,Family & Relationships
+父,ちち,(my) father,N5,noun,Family & Relationships
+母,はは,(my) mother,N5,noun,Family & Relationships
+人,ひと,"man, person",N5,noun,Family & Relationships
+やる,やる,"to do; to give (to pets, parents, siblings, etc.)",N5,verb,Family & Relationships
+どうして,どうして,"why, for what reason",N5,noun,Family & Relationships
+明るい,あかるい,bright (in reference to personality or weather); cheerful,N5,i-adjective,Family & Relationships
+大丈夫,だいじょうぶ,It's ok (all right); No need to worry; Everything is under control,N5,adverb,Everyday Essentials
+足; 脚,あし,foot; leg,N5,noun,Body & Health
+頭,あたま,head,N5,noun,Body & Health
+顔,かお,face (body part),N5,noun,Body & Health
+口,くち,job opening; mouth,N5,noun,Body & Health
+歯,は,tooth,N5,noun,Body & Health
+鼻,はな,nose,N5,noun,Body & Health
+耳,みみ,ear,N5,noun,Body & Health
+目,め,eye(s),N5,noun,Body & Health
+手,て,hand,N5,noun,Body & Health
+体,からだ,body; health,N5,noun,Body & Health
+お腹,おなか,stomach,N5,noun,Body & Health
+病院,びょういん,hospital,N5,noun,Body & Health
+医者,いしゃ,doctor; physician,N5,noun,Body & Health
+薬,くすり,medicine,N5,noun,Body & Health
+風邪,かぜ,"cold, flu",N5,noun,Body & Health
+病気,びょうき,illness; sickness,N5,noun,Body & Health
+元気,げんき,"health(y), energetic",N5,noun,Body & Health
+近く,ちかく,nearby; in the neighborhood,N5,noun,Body & Health
+入口,いりぐち,entrance,N5,noun,Body & Health
+出口,でぐち,an exit,N5,noun,Body & Health
+後ろ,うしろ,"back, behind, rear",N5,noun,Body & Health
+左,ひだり,left hand side,N5,noun,Body & Health
+右,みぎ,right hand side,N5,noun,Body & Health
+まっすぐ,まっすぐ,"straight (ahead), direct",N5,noun,Body & Health
+ハンカチ,ハンカチ,handkerchief,N5,noun,Body & Health
+漢字,かんじ,kanji; Chinese character,N5,noun,School & Education
+かぶる,かぶる,"to wear, to put on (e.g., a hat on the head)",N5,verb,Body & Health
+吸う,すう,"to breathe in, to suck",N5,verb,Body & Health
+出す,だす,to take (something) out; to hand in (something),N5,verb,Body & Health
+消える,きえる,"to vanish, to disappear",N5,verb,Body & Health
+出る,でる,"to appear, to leave",N5,verb,Body & Health
+疲れる,つかれる,to get (become) tired; to become fatigued,N5,verb,Body & Health
+習う,ならう,to learn,N5,verb,Body & Health
+磨く,みがく,to brush (teeth); to polish,N5,verb,Body & Health
+渡す,わたす,to hand (something) over (v.t.); to get across,N5,verb,Body & Health
+暖かい,あたたかい,warm,N5,i-adjective,Body & Health
+暑い,あつい,"hot (in reference to weather), warm",N5,i-adjective,Body & Health
+熱い,あつい,hot (objects),N5,i-adjective,Body & Health
+厚い,あつい,"kind, warm(hearted), thick, deep",N5,i-adjective,Body & Health
+痛い,いたい,hurt; painful; sore,N5,i-adjective,Body & Health
+寒い,さむい,cold (in reference to weather),N5,i-adjective,Body & Health
+近い,ちかい,"near, close by, short",N5,i-adjective,Body & Health
+温い,ぬるい,lukewarm,N5,i-adjective,Body & Health
+上手,じょうず,"be good at, skillful",N5,na-adjective,Body & Health
+下手,へた,"unskillful, poor",N5,na-adjective,Body & Health
+便利,べんり,"convenient, handy",N5,na-adjective,Body & Health
+丈夫,じょうぶ,strong; robust; solid; durable,N5,noun,Body & Health
+朝御飯,あさごはん,breakfast,N5,noun,Food & Cooking
+晩御飯,ばんごはん,"dinner, evening meal",N5,noun,Food & Cooking
+昼御飯,ひるごはん,"lunch, midday meal",N5,noun,Food & Cooking
+御飯,ごはん,rice (cooked); meal,N5,noun,Food & Cooking
+お弁当,おべんとう,a boxed lunch,N5,noun,Food & Cooking
+食べ物,たべもの,food,N5,noun,Food & Cooking
+飲み物,のみもの,"drink, beverage",N5,noun,Food & Cooking
+お酒,おさけ,sake; alcohol,N5,noun,Food & Cooking
+お茶,おちゃ,(green) tea,N5,noun,Food & Cooking
+コーヒー,コーヒー,coffee,N5,noun,Food & Cooking
+紅茶,こうちゃ,black tea,N5,noun,Food & Cooking
+牛乳,ぎゅうにゅう,milk,N5,noun,Food & Cooking
+果物,くだもの,fruit,N5,noun,Food & Cooking
+野菜,やさい,vegetable,N5,noun,Food & Cooking
+肉,にく,meat,N5,noun,Food & Cooking
+牛肉,ぎゅうにく,beef,N5,noun,Food & Cooking
+豚肉,ぶたにく,pork,N5,noun,Food & Cooking
+鶏肉,とりにく,chicken meat,N5,noun,Food & Cooking
+魚,さかな,fish,N5,noun,Food & Cooking
+卵,たまご,egg,N5,noun,Food & Cooking
+パン,パン,bread,N5,noun,Food & Cooking
+お菓子,おかし,"confections, sweets, snack",N5,noun,Food & Cooking
+飴,あめ,(hard) candy,N5,noun,Food & Cooking
+砂糖,さとう,sugar,N5,noun,Food & Cooking
+塩,しお,salt,N5,noun,Food & Cooking
+醤油,しょうゆ,soy sauce,N5,noun,Food & Cooking
+バター,バター,butter,N5,noun,Food & Cooking
+お皿,おさら,"plate, dish",N5,noun,Food & Cooking
+茶碗,ちゃわん,rice bowl,N5,noun,Food & Cooking
+カップ,カップ,cup,N5,noun,Food & Cooking
+コップ,コップ,a tumbler; a glass,N5,noun,Food & Cooking
+スプーン,スプーン,spoon,N5,noun,Food & Cooking
+フォーク,フォーク,fork,N5,noun,Food & Cooking
+ナイフ,ナイフ,knife,N5,noun,Food & Cooking
+箸,はし,chopsticks,N5,noun,Food & Cooking
+灰皿,はいざら,ashtray,N5,noun,Food & Cooking
+食堂,しょくどう,"cafeteria, dining hall",N5,noun,Food & Cooking
+レストラン,レストラン,restaurant,N5,noun,Food & Cooking
+喫茶店,きっさてん,café,N5,noun,Food & Cooking
+台所,だいどころ,kitchen,N5,noun,Food & Cooking
+教える,おしえる,"to teach, to inform, to instruct",N5,verb,Food & Cooking
+作る,つくる,"to make, to create",N5,verb,Food & Cooking
+食べる,たべる,to eat,N5,verb,Food & Cooking
+甘い,あまい,"generous, sweet",N5,i-adjective,Food & Cooking
+美味しい,おいしい,"delicious, tasty",N5,i-adjective,Food & Cooking
+辛い,からい,hot and spicy; salty,N5,i-adjective,Food & Cooking
+まずい,まずい,"terrible (in reference to food), unappetizing, unpleasant (taste)",N5,i-adjective,Food & Cooking
+涼しい,すずしい,"cool, refreshing (in reference to weather)",N5,i-adjective,Food & Cooking
+とても,とても,"very (much), greatly, exceedingly",N5,adverb,Food & Cooking
+～個,～こ,"counter for small items (e.g., fruits, cups)",N5,counter,Food & Cooking
+家,いえ,"house, home",N5,noun,Home & Daily Life
+うち,うち,home; house; my place,N5,noun,Home & Daily Life
+アパート,アパート,apartment (abbr.),N5,noun,Home & Daily Life
+部屋,へや,a room,N5,noun,Home & Daily Life
+ベッド,ベッド,bed,N5,noun,Home & Daily Life
+机,つくえ,desk,N5,noun,Home & Daily Life
+テーブル,テーブル,table,N5,noun,Home & Daily Life
+椅子,いす,chair,N5,noun,Home & Daily Life
+本棚,ほんだな,bookshelf,N5,noun,Home & Daily Life
+窓,まど,window,N5,noun,Home & Daily Life
+ドア,ドア,door (Western style),N5,noun,Home & Daily Life
+戸,と,door (Japanese style),N5,noun,Home & Daily Life
+玄関,げんかん,entrance (to a house or a building),N5,noun,Home & Daily Life
+階段,かいだん,stairs,N5,noun,Home & Daily Life
+廊下,ろうか,corridor,N5,noun,Home & Daily Life
+トイレ,トイレ,bathroom; toilet,N5,noun,Home & Daily Life
+お手洗い,おてあらい,"toilet, restroom, bathroom (lit., a place to wash one's hands)",N5,i-adjective,Home & Daily Life
+お風呂,おふろ,a bath,N5,noun,Home & Daily Life
+シャワー,シャワー,shower,N5,noun,Home & Daily Life
+浴びる,あびる,"to bathe, to shower",N5,verb,Home & Daily Life
+寝る,ねる,to sleep; to go to sleep; to go to bed,N5,verb,Home & Daily Life
+洗濯,せんたく,"washing, laundry",N5,noun,Home & Daily Life
+掃除,そうじ (する),"cleaning, sweeping",N5,na-adjective,Home & Daily Life
+ストーブ,ストーブ,heater (lit: stove),N5,noun,Home & Daily Life
+電気,でんき,"electricity, (electric) light",N5,noun,Home & Daily Life
+冷蔵庫,れいぞうこ,refrigerator,N5,noun,Home & Daily Life
+鍵,かぎ,a lock; a key,N5,noun,Home & Daily Life
+庭,にわ,garden,N5,noun,Home & Daily Life
+建物,たてもの,building,N5,noun,Home & Daily Life
+家庭,かてい,home; family,N5,noun,Home & Daily Life
+角,かど,"corner (e.g., desk, pavement)",N5,noun,Home & Daily Life
+ポスト,ポスト,"mailbox; post, position",N5,noun,Home & Daily Life
+眼鏡,めがね,eye glasses,N5,noun,Home & Daily Life
+エレベーター,エレベーター,elevator,N5,noun,Home & Daily Life
+～階,～かい,counter for stories (floors) of a building,N5,counter,Home & Daily Life
+服,ふく,clothes,N5,noun,Clothing & Accessories
+洋服,ようふく,Western-style clothes,N5,noun,Clothing & Accessories
+上着,うわぎ,"coat, jacket",N5,noun,Clothing & Accessories
+コート,コート,"coat; court (e.g., tennis)",N5,noun,Clothing & Accessories
+シャツ,シャツ,shirt,N5,noun,Clothing & Accessories
+ワイシャツ,ワイシャツ,"shirt (lit: white shirt), business shirt",N5,noun,Clothing & Accessories
+セーター,セーター,sweater,N5,noun,Clothing & Accessories
+ネクタイ,ネクタイ,"tie, necktie",N5,noun,Clothing & Accessories
+ズボン,ズボン,trousers,N5,noun,Clothing & Accessories
+スカート,スカート,skirt,N5,noun,Clothing & Accessories
+靴,くつ,"shoes, footwear",N5,noun,Clothing & Accessories
+靴下,くつした,socks,N5,noun,Clothing & Accessories
+帽子,ぼうし,hat; cap,N5,noun,Clothing & Accessories
+傘,かさ,"umbrella, parasol",N5,noun,Clothing & Accessories
+ボタン,ボタン,button,N5,noun,Clothing & Accessories
+着る,きる,to put on (clothes above your waist); to wear,N5,verb,Clothing & Accessories
+脱ぐ,ぬぐ,to take off (clothes),N5,verb,Clothing & Accessories
+する,する,"to do, to try; to wear small items (e.g., necktie, watch, etc.)",N5,verb,Clothing & Accessories
+はく,はく,to put on (items below your waist),N5,verb,Clothing & Accessories
+つまらない,つまらない,"boring, dull; insignificant",N5,i-adjective,Clothing & Accessories
+どんな,どんな,"what, what kind of",N5,na-adjective,Clothing & Accessories
+また,また,and; furthermore,N5,adverb,Clothing & Accessories
+青,あお,blue,N5,noun,Colors & Descriptions
+赤,あか,red,N5,noun,Colors & Descriptions
+黄色,きいろ,yellow,N5,noun,Colors & Descriptions
+黒,くろ,black,N5,noun,Colors & Descriptions
+白,しろ,white,N5,noun,Colors & Descriptions
+緑,みどり,green,N5,noun,Colors & Descriptions
+茶色,ちゃいろ,brown,N5,noun,Colors & Descriptions
+色,いろ,color,N5,noun,Colors & Descriptions
+大きな,おおきな,big,N5,noun,Colors & Descriptions
+小さな,ちいさな,"small, little",N5,noun,Colors & Descriptions
+同じ,おなじ,"same, identical",N5,noun,Colors & Descriptions
+物,もの,thing (concrete object),N5,noun,Colors & Descriptions
+ニュース,ニュース,news,N5,noun,Colors & Descriptions
+なぜ,なぜ,why (same as どうして),N5,noun,Colors & Descriptions
+困る,こまる,"to be bothered, to have difficulty",N5,verb,Colors & Descriptions
+違う,ちがう,to be different; to differ; wrong,N5,verb,Colors & Descriptions
+始まる,はじまる,(something) begins,N5,noun,Colors & Descriptions
+つける,つける,"to turn on (e.g., a light); to take",N5,verb,Colors & Descriptions
+並べる,ならべる,to put (things) side by side; to line up,N5,verb,Colors & Descriptions
+無くす,なくす,to lose something,N5,verb,Colors & Descriptions
+青い,あおい,blue,N5,i-adjective,Colors & Descriptions
+赤い,あかい,red,N5,i-adjective,Colors & Descriptions
+黄色い,きいろい,yellow,N5,i-adjective,Colors & Descriptions
+黒い,くろい,black; dark,N5,i-adjective,Colors & Descriptions
+白い,しろい,white,N5,i-adjective,Colors & Descriptions
+新しい,あたらしい,new,N5,i-adjective,Colors & Descriptions
+古い,ふるい,"old (in reference to objects, not people), aged, ancient",N5,i-adjective,Colors & Descriptions
+大きい,おおきい,"big, large",N5,i-adjective,Colors & Descriptions
+小さい,ちいさい,"small, little",N5,i-adjective,Colors & Descriptions
+高い,たかい,"tall, high; expensive",N5,i-adjective,Colors & Descriptions
+低い,ひくい,"short, low",N5,i-adjective,Colors & Descriptions
+長い,ながい,"long, lengthy",N5,i-adjective,Colors & Descriptions
+短い,みじかい,short (length),N5,i-adjective,Colors & Descriptions
+太い,ふとい,"fat, thick",N5,i-adjective,Colors & Descriptions
+細い,ほそい,"thin, slender, fine",N5,i-adjective,Colors & Descriptions
+薄い,うすい,"thin, weak",N5,i-adjective,Colors & Descriptions
+厚い,あつい,"kind, warm(hearted), thick, deep",N5,i-adjective,Colors & Descriptions
+重い,おもい,heavy; serious,N5,i-adjective,Personality & Character
+軽い,かるい,"light, non-serious, minor",N5,i-adjective,Personality & Character
+面白い,おもしろい,"interesting, amusing",N5,i-adjective,Colors & Descriptions
+つける,つける,"to turn on (e.g., a light); to take",N5,verb,Colors & Descriptions
+遅い,おそい,slow; (to be) late,N5,i-adjective,Colors & Descriptions
+速い,はやい,"fast, quick",N5,i-adjective,Colors & Descriptions
+強い,つよい,"strong, powerful",N5,i-adjective,Colors & Descriptions
+弱い,よわい,weak,N5,i-adjective,Colors & Descriptions
+若い,わかい,young,N5,i-adjective,Colors & Descriptions
+易しい,やさしい,"easy, plain, simple",N5,i-adjective,Colors & Descriptions
+狭い,せまい,narrow; not spacious,N5,i-adjective,Colors & Descriptions
+汚い,きたない,"dirty, unclean, filthy",N5,i-adjective,Colors & Descriptions
+冷たい,つめたい,"cold (things, people)",N5,i-adjective,Colors & Descriptions
+可愛い,かわいい,"cute, adorable",N5,i-adjective,Colors & Descriptions
+色々,いろいろ,various,N5,na-adjective,Colors & Descriptions
+綺麗,きれい,"pretty, clean, tidy",N5,na-adjective,Colors & Descriptions
+大変,たいへん,"very; difficult, hard",N5,adverb,Colors & Descriptions
+ゆっくりと,ゆっくりと,"slowly, at ease",N5,adverb,Colors & Descriptions
+～本,～ほん,counter for long cylindrical things,N5,counter,Colors & Descriptions
+～枚,～まい,counter for flat things,N5,counter,Colors & Descriptions
+好き,すき,"liking, fondness, love",N5,noun,Feelings & Emotions
+大好き,だいすき,"very like-able, like very much",N5,adverb,Feelings & Emotions
+嫌い,きらい,dislike,N5,i-adjective,Feelings & Emotions
+楽しい,たのしい,"enjoyable, fun",N5,i-adjective,Feelings & Emotions
+危ない,あぶない,"dangerous, critical",N5,i-adjective,Feelings & Emotions
+暗い,くらい,"dark, gloomy",N5,i-adjective,Feelings & Emotions
+静か,しずか,"quiet, calm",N5,na-adjective,Personality & Character
+あちら,あちら,this way (polite),N5,na-adjective,Personality & Character
+ここ,ここ,"here, this place",N5,noun,Actions & Movement
+上げる,あげる,"to raise, to lift",N5,verb,Actions & Movement
+置く,おく,to put; to lay; to place,N5,verb,Actions & Movement
+入れる,いれる,to put in,N5,verb,Actions & Movement
+出す,だす,to take (something) out; to hand in (something),N5,verb,Actions & Movement
+持つ,もつ,"to hold, to carry; to possess",N5,verb,Actions & Movement
+取る,とる,to take (a class); to get (a grade),N5,verb,Actions & Movement
+歩く,あるく,to walk,N5,verb,Actions & Movement
+走る,はしる,to run,N5,verb,Actions & Movement
+飛ぶ,とぶ,"to fly, to hop",N5,verb,Actions & Movement
+遊ぶ,あそぶ,to play; to spend time pleasantly; to hang out,N5,verb,Actions & Movement
+散歩,さんぽ (する),"walk, stroll",N5,noun,Actions & Movement
+座る,すわる,to sit,N5,verb,Actions & Movement
+立つ,たつ,to stand up,N5,verb,Actions & Movement
+入る,はいる,"to enter, to contain, to hold",N5,verb,Actions & Movement
+出る,でる,"to appear, to leave",N5,verb,Actions & Movement
+帰る,かえる,"to go back, to go home, to return",N5,verb,Actions & Movement
+行く,いく; ゆく,to go,N5,verb,Actions & Movement
+来る,くる,to come,N5,verb,Actions & Movement
+乗る,のる,"to get on, to ride in, to board",N5,verb,Actions & Movement
+降りる,おりる,to get off,N5,verb,Actions & Movement
+着く,つく,"to arrive at, to reach",N5,verb,Actions & Movement
+渡る,わたる,"to cross over, to go across",N5,verb,Actions & Movement
+曲る,まがる,"to turn, to bend",N5,verb,Actions & Movement
+閉まる,しまる,"to close, to be closed",N5,verb,Actions & Movement
+閉める,しめる,"to close, to shut",N5,verb,Actions & Movement
+開く,あく,"to open, to become open",N5,verb,Actions & Movement
+開ける,あける,to open (v.t.),N5,verb,Actions & Movement
+押す,おす,"to push, to press, to stamp (e.g., a passport)",N5,verb,Actions & Movement
+差す,さす,"to raise (stretch out) hands, to raise (e.g., umbrella)",N5,verb,Actions & Movement
+貼る,はる,to post; to paste; to attach,N5,verb,Actions & Movement
+掛ける,かける,"to put on (e.g., glasses); to hang (e.g., on a wall)",N5,verb,Actions & Movement
+切る,きる,to cut; to hang up (a phone),N5,verb,Actions & Movement
+締める,しめる,"to tie, to fasten, to tighten",N5,verb,Actions & Movement
+返す,かえす,to return something,N5,verb,Actions & Movement
+貸す,かす,to lend,N5,verb,Actions & Movement
+借りる,かりる,"to borrow, to owe",N5,verb,Actions & Movement
+終る,おわる,"to finish, to close",N5,verb,Actions & Movement
+初め; 始め,はじめ,"beginning, start",N5,noun,Actions & Movement
+～たち,～たち,plural suffix,N5,prefix/suffix,Actions & Movement
+りっぱ,りっぱ,"splendid, fine",N5,na-adjective,Actions & Movement
+学生,がくせい,student,N5,noun,School & Education
+先生,せんせい,"teacher, professor; master; doctor",N5,noun,School & Education
+生徒,せいと,student; pupil,N5,noun,School & Education
+学校,がっこう,a school,N5,noun,School & Education
+大学,だいがく,college; university,N5,noun,School & Education
+教室,きょうしつ,classroom,N5,noun,School & Education
+クラス,クラス,a class,N5,noun,School & Education
+授業,じゅぎょう,a class (of school),N5,noun,School & Education
+宿題,しゅくだい,homework,N5,noun,School & Education
+テスト,テスト,test,N5,noun,School & Education
+図書館,としょかん,library,N5,noun,School & Education
+ノート,ノート,notebook,N5,noun,School & Education
+鉛筆,えんぴつ,pencil,N5,noun,School & Education
+ペン,ペン,pen,N5,noun,School & Education
+勉強,べんきょう (する),study,N5,noun,School & Education
+留学生,りゅうがくせい,international student,N5,noun,School & Education
+作文,さくぶん,essay; composition,N5,noun,School & Education
+嫌,いや,"disagreeable, detestable, unpleasant",N5,noun,School & Education
+取る,とる,to take (a class); to get (a grade),N5,verb,School & Education
+起きる,おきる,"to get up (e.g., from sleeping); to happen",N5,verb,School & Education
+開く,あく,"to open, to become open",N5,verb,School & Education
+開ける,あける,to open (v.t.),N5,verb,School & Education
+段々,だんだん,"gradually, by degrees",N5,adverb,School & Education
+会社,かいしゃ,"company, corporation",N5,noun,Work & Career
+仕事,しごと,"work, job, occupation, employment",N5,noun,Work & Career
+勤める,つとめる,to work (for),N5,verb,Work & Career
+働く,はたらく,to work,N5,verb,Work & Career
+警官,けいかん,police officer,N5,noun,Work & Career
+デパート,デパート,(abbr.) department store,N5,noun,Work & Career
+郵便局,ゆうびんきょく,post office,N5,noun,Work & Career
+おまわりさん,おまわりさん,policeman (friendly term),N5,noun,Work & Career
+駅,えき,station,N5,noun,Travel & Transport
+バス,バス,bus; bath; bass,N5,noun,Travel & Transport
+電車,でんしゃ,electric train,N5,noun,Travel & Transport
+地下鉄,ちかてつ,"underground train, subway",N5,noun,Travel & Transport
+タクシー,タクシー,taxi,N5,noun,Travel & Transport
+飛行機,ひこうき,airplane,N5,noun,Travel & Transport
+自転車,じてんしゃ,bicycle,N5,noun,Travel & Transport
+車,くるま,"car, vehicle",N5,noun,Travel & Transport
+自動車,じどうしゃ,automobile,N5,noun,Travel & Transport
+ホテル,ホテル,hotel,N5,noun,Travel & Transport
+切符,きっぷ,a ticket,N5,noun,Travel & Transport
+地図,ちず,a map,N5,noun,Travel & Transport
+道,みち,"road, street; way, directions",N5,noun,Travel & Transport
+交差点,こうさてん,intersection,N5,noun,Travel & Transport
+橋,はし,bridge,N5,noun,Travel & Transport
+荷物,にもつ,luggage; baggage,N5,noun,Travel & Transport
+旅行,りょこう,"travel, trip",N5,noun,Travel & Transport
+着く,つく,"to arrive at, to reach",N5,verb,Travel & Transport
+乗る,のる,"to get on, to ride in, to board",N5,verb,Travel & Transport
+広い,ひろい,spacious; wide; broad,N5,i-adjective,Travel & Transport
+大切,たいせつ,important,N5,na-adjective,Travel & Transport
+にぎやか,にぎやか,"bustling, busy",N5,na-adjective,Travel & Transport
+お金,おかね,money,N5,noun,Shopping & Money
+銀行,ぎんこう,bank,N5,noun,Shopping & Money
+店,みせ,"store, shop",N5,noun,Shopping & Money
+買い物,かいもの,shopping,N5,noun,Shopping & Money
+財布,さいふ,wallet,N5,noun,Shopping & Money
+八百屋,やおや,greengrocer,N5,noun,Shopping & Money
+切手,きって,postal (postage) stamps,N5,noun,Shopping & Money
+買う,かう,to buy,N5,verb,Shopping & Money
+売る,うる,to sell (v.t.),N5,verb,Shopping & Money
+安い,やすい,inexpensive; cheap (things),N5,i-adjective,Shopping & Money
+～がる,～がる,feel,N5,prefix/suffix,Shopping & Money
+～屋,～や,~ shop,N5,prefix/suffix,Shopping & Money
+意味,いみ,"meaning, significance",N5,noun,Communication
+言葉,ことば,language; word(s); expression(s),N5,noun,Communication
+英語,えいご,English (language),N5,noun,Communication
+新聞,しんぶん,newspaper,N5,noun,Communication
+雑誌,ざっし,"magazine, journal",N5,noun,Communication
+手紙,てがみ,letter,N5,noun,Communication
+電話,でんわ,a telephone,N5,noun,Communication
+質問,しつもん,"question, inquiry",N5,noun,Communication
+話,はなし,"talk (chat), story",N5,noun,Communication
+文章,ぶんしょう,"sentence, text",N5,noun,Communication
+～語,～ご,"word, language",N5,prefix/suffix,Communication
+言う,いう,to say,N5,verb,Communication
+話す,はなす,to speak,N5,verb,Communication
+聞く,きく,"to hear, to listen, to ask",N5,verb,Communication
+答える,こたえる,"to answer, to reply",N5,verb,Communication
+書く,かく,to write,N5,verb,Communication
+読む,よむ,to read,N5,verb,Communication
+頼む,たのむ,"to request, to ask (a favor)",N5,verb,Communication
+かける,かける,"to dial/call (e.g., phone); to sit down",N5,verb,Communication
+声,こえ,voice,N5,noun,Communication
+かばん,かばん,"bag, basket",N5,noun,Communication
+秋,あき,fall (season),N5,noun,Nature & Weather
+夏,なつ,summer,N5,noun,Nature & Weather
+冬,ふゆ,winter,N5,noun,Nature & Weather
+春,はる,spring,N5,noun,Nature & Weather
+天気,てんき,weather,N5,noun,Nature & Weather
+晴れ,はれ,clear (sunny) weather,N5,noun,Nature & Weather
+曇り,くもり,"cloudiness, cloudy weather",N5,noun,Nature & Weather
+雨,あめ,rain,N5,noun,Nature & Weather
+雪,ゆき,snow,N5,noun,Nature & Weather
+風,かぜ,"wind, breeze",N5,noun,Nature & Weather
+海,うみ,"sea, beach",N5,noun,Nature & Weather
+山,やま,mountain,N5,noun,Nature & Weather
+川; 河,かわ,river,N5,noun,Nature & Weather
+池,いけ,pond,N5,noun,Nature & Weather
+空,そら,sky,N5,noun,Nature & Weather
+花,はな,flower,N5,noun,Nature & Weather
+木,き,"tree, wood, timber",N5,noun,Nature & Weather
+花瓶,かびん,(flower) vase,N5,noun,Nature & Weather
+石鹸,せっけん,soap,N5,noun,Nature & Weather
+沢山,たくさん,"many, much",N5,noun,Nature & Weather
+晴れる,はれる,to be sunny,N5,verb,Nature & Weather
+曇る,くもる,"to become cloudy, to become dim",N5,verb,Nature & Weather
+降る,ふる,"to precipitate, to fall (e.g., rain, snow, etc.)",N5,verb,Nature & Weather
+吹く,ふく,"to blow (wind, etc.)",N5,verb,Nature & Weather
+咲く,さく,to bloom,N5,verb,Nature & Weather
+犬,いぬ,dog,N5,noun,Animals & Nature
+猫,ねこ,cat,N5,noun,Animals & Nature
+鳥,とり,"chicken (lit., bird)",N5,noun,Animals & Nature
+遠い,とおい,"far (away), distant",N5,i-adjective,Animals & Nature
+欲しい,ほしい,"to want, in need of",N5,verb,Animals & Nature
+飛ぶ,とぶ,"to fly, to hop",N5,verb,Animals & Nature
+プール,プール,swimming pool,N5,noun,Sports & Activities
+スポーツ,スポーツ,sport(s),N5,noun,Sports & Activities
+練習,れんしゅう (する),(to) practice,N5,noun,Sports & Activities
+泳ぐ,およぐ,to swim,N5,verb,Sports & Activities
+走る,はしる,to run,N5,verb,Sports & Activities
+登る,のぼる,to climb,N5,verb,Sports & Activities
+ボールペン,ボールペン,ball-point pen,N5,noun,Sports & Activities
+マッチ,マッチ,match,N5,noun,Sports & Activities
+歌,うた,a song,N5,noun,Arts & Entertainment
+映画,えいが,"movie, film",N5,noun,Arts & Entertainment
+音楽,おんがく,Music,N5,noun,Arts & Entertainment
+絵,え,a painting; a picture; a drawing,N5,noun,Arts & Entertainment
+写真,しゃしん,a picture; a photograph,N5,noun,Arts & Entertainment
+本,ほん,book,N5,noun,Arts & Entertainment
+テレビ,テレビ,"television, TV",N5,noun,Arts & Entertainment
+ラジオ,ラジオ,radio,N5,noun,Arts & Entertainment
+映画館,えいがかん,"movie theater, cinema",N5,noun,Arts & Entertainment
+ギター,ギター,guitar,N5,noun,Arts & Entertainment
+パーティー,パーティー,a party,N5,noun,Arts & Entertainment
+テープレコーダー,テープレコーダー,tape recorder,N5,noun,Arts & Entertainment
+レコード,レコード,record,N5,noun,Arts & Entertainment
+フィルム,フィルム,film (roll of),N5,noun,Arts & Entertainment
+ラジオカセ,ラジオカセ,radio cassette player,N5,noun,Arts & Entertainment
+歌う,うたう,to sing,N5,verb,Arts & Entertainment
+撮る,とる,"to take (a photo), to make (a film)",N5,verb,Arts & Entertainment
+見せる,みせる,"to show, to display",N5,verb,Arts & Entertainment
+弾く,ひく,to play (a string instrument or piano),N5,verb,Arts & Entertainment
+引く,ひく,"to pull, to draw; subtract",N5,verb,Arts & Entertainment
+出かける,でかける,to go out; to depart,N5,verb,Arts & Entertainment
+渡る,わたる,"to cross over, to go across",N5,verb,Arts & Entertainment
+外国,がいこく,foreign country; abroad,N5,noun,Geography & Places
+国,くに,country; place of origin,N5,noun,Geography & Places
+町,まち,town; city,N5,noun,Geography & Places
+村,むら,village,N5,noun,Geography & Places
+公園,こうえん,a park,N5,noun,Geography & Places
+北,きた,north,N5,noun,Geography & Places
+南,みなみ,South,N5,noun,Geography & Places
+東,ひがし,east,N5,noun,Geography & Places
+西,にし,west,N5,noun,Geography & Places
+外国人,がいこくじん,foreigner,N5,noun,Geography & Places

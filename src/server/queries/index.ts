@@ -1,11 +1,2 @@
-// User Progress Queries
-export * from './user-progress-queries';
-
-// User Word Queries
-export * from './user-word-queries';
-
-// Word Queries
-export * from './word-queries';
-
-// Review Queries
-export * from './review-queries';
+export * from './queries';
+export * from './admin-queries';

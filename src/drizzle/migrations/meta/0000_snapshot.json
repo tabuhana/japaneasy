@@ -1,5 +1,5 @@
 {
-  "id": "d5bf0548-c80c-4e35-9283-dfd31b14f01f",
+  "id": "73464acc-cbb4-4f4c-8d70-6363c6144a08",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -255,6 +255,13 @@
           "notNull": true,
           "default": false
         },
+        "is_admin": {
+          "name": "is_admin",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
         "created_at": {
           "name": "created_at",
           "type": "timestamp",
@@ -282,6 +289,45 @@
           ]
         }
       },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.user_subscription": {
+      "name": "user_subscription",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "user_subscription_user_id_user_id_fk": {
+          "name": "user_subscription_user_id_user_id_fk",
+          "tableFrom": "user_subscription",
+          "tableTo": "user",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
@@ -353,8 +399,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.user_group_progress": {
-      "name": "user_group_progress",
+    "public.courses": {
+      "name": "courses",
       "schema": "",
       "columns": {
         "id": {
@@ -364,55 +410,149 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
-        "user_level_progress_id": {
-          "name": "user_level_progress_id",
+        "title": {
+          "name": "title",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "display_order": {
+          "name": "display_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "is_published": {
+          "name": "is_published",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.lessons": {
+      "name": "lessons",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "course_id": {
+          "name": "course_id",
           "type": "uuid",
           "primaryKey": false,
           "notNull": true
         },
-        "group_number": {
-          "name": "group_number",
+        "content": {
+          "name": "content",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "image_url": {
+          "name": "image_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "display_order": {
+          "name": "display_order",
           "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
-        "status": {
-          "name": "status",
-          "type": "level_status",
-          "typeSchema": "public",
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
-          "default": "'locked'"
+          "default": "now()"
         },
-        "total_words": {
-          "name": "total_words",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "words_added": {
-          "name": "words_added",
-          "type": "integer",
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
-          "default": 0
-        },
-        "words_completed": {
-          "name": "words_completed",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "default": 0
+          "default": "now()"
         }
       },
-      "indexes": {},
+      "indexes": {
+        "idx_lessons_course": {
+          "name": "idx_lessons_course",
+          "columns": [
+            {
+              "expression": "course_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "idx_lessons_course_order": {
+          "name": "idx_lessons_course_order",
+          "columns": [
+            {
+              "expression": "course_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "display_order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
       "foreignKeys": {
-        "user_group_progress_user_level_progress_id_user_level_progress_id_fk": {
-          "name": "user_group_progress_user_level_progress_id_user_level_progress_id_fk",
-          "tableFrom": "user_group_progress",
-          "tableTo": "user_level_progress",
+        "lessons_course_id_courses_id_fk": {
+          "name": "lessons_course_id_courses_id_fk",
+          "tableFrom": "lessons",
+          "tableTo": "courses",
           "columnsFrom": [
-            "user_level_progress_id"
+            "course_id"
           ],
           "columnsTo": [
             "id"
@@ -422,22 +562,13 @@
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "user_group_progress_user_level_progress_id_group_number_unique": {
-          "name": "user_group_progress_user_level_progress_id_group_number_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "user_level_progress_id",
-            "group_number"
-          ]
-        }
-      },
+      "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.user_level_progress": {
-      "name": "user_level_progress",
+    "public.user_course_progress": {
+      "name": "user_course_progress",
       "schema": "",
       "columns": {
         "id": {
@@ -453,33 +584,17 @@
           "primaryKey": false,
           "notNull": true
         },
-        "level": {
-          "name": "level",
-          "type": "jlpt_level",
-          "typeSchema": "public",
+        "course_id": {
+          "name": "course_id",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
         },
-        "status": {
-          "name": "status",
-          "type": "level_status",
-          "typeSchema": "public",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "'locked'"
-        },
-        "total_words_in_level": {
-          "name": "total_words_in_level",
-          "type": "integer",
+        "lesson_id": {
+          "name": "lesson_id",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
-        },
-        "words_mastered_count": {
-          "name": "words_mastered_count",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "default": 0
         },
         "started_at": {
           "name": "started_at",
@@ -499,54 +614,65 @@
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
         }
       },
-      "indexes": {
-        "idx_userlevel_user_status": {
-          "name": "idx_userlevel_user_status",
-          "columns": [
-            {
-              "expression": "user_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "status",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
+      "indexes": {},
       "foreignKeys": {
-        "user_level_progress_user_id_user_progress_user_id_fk": {
-          "name": "user_level_progress_user_id_user_progress_user_id_fk",
-          "tableFrom": "user_level_progress",
-          "tableTo": "user_progress",
+        "user_course_progress_user_id_user_id_fk": {
+          "name": "user_course_progress_user_id_user_id_fk",
+          "tableFrom": "user_course_progress",
+          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
           "columnsTo": [
-            "user_id"
+            "id"
           ],
           "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "user_course_progress_course_id_courses_id_fk": {
+          "name": "user_course_progress_course_id_courses_id_fk",
+          "tableFrom": "user_course_progress",
+          "tableTo": "courses",
+          "columnsFrom": [
+            "course_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "user_course_progress_lesson_id_lessons_id_fk": {
+          "name": "user_course_progress_lesson_id_lessons_id_fk",
+          "tableFrom": "user_course_progress",
+          "tableTo": "lessons",
+          "columnsFrom": [
+            "lesson_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
           "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "user_level_progress_user_id_level_unique": {
-          "name": "user_level_progress_user_id_level_unique",
+        "user_course_progress_user_id_course_id_unique": {
+          "name": "user_course_progress_user_id_course_id_unique",
           "nullsNotDistinct": false,
           "columns": [
             "user_id",
-            "level"
+            "course_id"
           ]
         }
       },
@@ -564,20 +690,32 @@
           "primaryKey": true,
           "notNull": true
         },
-        "current_active_level": {
-          "name": "current_active_level",
-          "type": "jlpt_level",
-          "typeSchema": "public",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "'N5'"
-        },
         "streak_count": {
           "name": "streak_count",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,
           "default": 0
+        },
+        "last_review_date": {
+          "name": "last_review_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "hiragana_quiz_passed": {
+          "name": "hiragana_quiz_passed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "katakana_quiz_passed": {
+          "name": "katakana_quiz_passed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
         },
         "created_at": {
           "name": "created_at",
@@ -616,109 +754,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.words": {
-      "name": "words",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
-        },
-        "kanji": {
-          "name": "kanji",
-          "type": "varchar(100)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "kana": {
-          "name": "kana",
-          "type": "varchar(100)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "romaji": {
-          "name": "romaji",
-          "type": "varchar(100)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "english": {
-          "name": "english",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "level": {
-          "name": "level",
-          "type": "jlpt_level",
-          "typeSchema": "public",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "word_group": {
-          "name": "word_group",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {
-        "idx_words_level": {
-          "name": "idx_words_level",
-          "columns": [
-            {
-              "expression": "level",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "idx_words_level_group": {
-          "name": "idx_words_level_group",
-          "columns": [
-            {
-              "expression": "level",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "word_group",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.user_words": {
-      "name": "user_words",
+    "public.user_word_progress": {
+      "name": "user_word_progress",
       "schema": "",
       "columns": {
         "id": {
@@ -795,13 +832,6 @@
           "primaryKey": false,
           "notNull": false
         },
-        "from_level": {
-          "name": "from_level",
-          "type": "jlpt_level",
-          "typeSchema": "public",
-          "primaryKey": false,
-          "notNull": true
-        },
         "added_at": {
           "name": "added_at",
           "type": "timestamp",
@@ -869,9 +899,9 @@
         }
       },
       "foreignKeys": {
-        "user_words_user_id_user_id_fk": {
-          "name": "user_words_user_id_user_id_fk",
-          "tableFrom": "user_words",
+        "user_word_progress_user_id_user_id_fk": {
+          "name": "user_word_progress_user_id_user_id_fk",
+          "tableFrom": "user_word_progress",
           "tableTo": "user",
           "columnsFrom": [
             "user_id"
@@ -882,9 +912,9 @@
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
-        "user_words_word_id_words_id_fk": {
-          "name": "user_words_word_id_words_id_fk",
-          "tableFrom": "user_words",
+        "user_word_progress_word_id_words_id_fk": {
+          "name": "user_word_progress_word_id_words_id_fk",
+          "tableFrom": "user_word_progress",
           "tableTo": "words",
           "columnsFrom": [
             "word_id"
@@ -898,8 +928,8 @@
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "user_words_user_id_word_id_unique": {
-          "name": "user_words_user_id_word_id_unique",
+        "user_word_progress_user_id_word_id_unique": {
+          "name": "user_word_progress_user_id_word_id_unique",
           "nullsNotDistinct": false,
           "columns": [
             "user_id",
@@ -907,6 +937,148 @@
           ]
         }
       },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.words": {
+      "name": "words",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "kanji": {
+          "name": "kanji",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "kana": {
+          "name": "kana",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "romaji": {
+          "name": "romaji",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "english": {
+          "name": "english",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "part_of_speech": {
+          "name": "part_of_speech",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_group": {
+          "name": "word_group",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "level": {
+          "name": "level",
+          "type": "jlpt_level",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "display_order": {
+          "name": "display_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "idx_words_level": {
+          "name": "idx_words_level",
+          "columns": [
+            {
+              "expression": "level",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "idx_words_level_group": {
+          "name": "idx_words_level_group",
+          "columns": [
+            {
+              "expression": "level",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "word_group",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "idx_words_level_order": {
+          "name": "idx_words_level_order",
+          "columns": [
+            {
+              "expression": "level",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "display_order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
@@ -928,8 +1100,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "user_word_id": {
-          "name": "user_word_id",
+        "user_word_progress_id": {
+          "name": "user_word_progress_id",
           "type": "uuid",
           "primaryKey": false,
           "notNull": true
@@ -966,12 +1138,6 @@
           "primaryKey": false,
           "notNull": true
         },
-        "time_spent": {
-          "name": "time_spent",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
         "reviewed_at": {
           "name": "reviewed_at",
           "type": "timestamp",
@@ -980,70 +1146,27 @@
           "default": "now()"
         }
       },
-      "indexes": {
-        "idx_reviews_user_reviewedat": {
-          "name": "idx_reviews_user_reviewedat",
-          "columns": [
-            {
-              "expression": "user_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "reviewed_at",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "idx_reviews_userword_reviewedat": {
-          "name": "idx_reviews_userword_reviewedat",
-          "columns": [
-            {
-              "expression": "user_word_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "reviewed_at",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
+      "indexes": {},
       "foreignKeys": {
-        "reviews_user_id_user_progress_user_id_fk": {
-          "name": "reviews_user_id_user_progress_user_id_fk",
+        "reviews_user_id_user_id_fk": {
+          "name": "reviews_user_id_user_id_fk",
           "tableFrom": "reviews",
-          "tableTo": "user_progress",
+          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
           "columnsTo": [
-            "user_id"
+            "id"
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
-        "reviews_user_word_id_user_words_id_fk": {
-          "name": "reviews_user_word_id_user_words_id_fk",
+        "reviews_user_word_progress_id_user_word_progress_id_fk": {
+          "name": "reviews_user_word_progress_id_user_word_progress_id_fk",
           "tableFrom": "reviews",
-          "tableTo": "user_words",
+          "tableTo": "user_word_progress",
           "columnsFrom": [
-            "user_word_id"
+            "user_word_progress_id"
           ],
           "columnsTo": [
             "id"
@@ -1078,16 +1201,8 @@
         "N4",
         "N3",
         "N2",
-        "N1"
-      ]
-    },
-    "public.level_status": {
-      "name": "level_status",
-      "schema": "public",
-      "values": [
-        "locked",
-        "active",
-        "completed"
+        "N1",
+        "N0"
       ]
     }
   },

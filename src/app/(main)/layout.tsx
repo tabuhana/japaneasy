@@ -4,11 +4,7 @@ import { redirect } from 'next/navigation';
 import { Header } from '@/components/layout/header';
 
 export default async function PlatformLayout({ children }: { children: React.ReactNode }) {
-  const user = await getUser();
 
-  if (!user) {
-    redirect('/auth/signin');
-  }
 
   return (
     <>

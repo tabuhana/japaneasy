@@ -85,3 +85,10 @@ Next to do:
 Hiragana and katakana quiz
 Admin pannel
 Change unit cards to show word progress instead of by groups
+
+
+I think I want the review button to be separate from the unit cards
+Would be better to have a panel with the new actions somewhere
+
+I think the ai has started to slopify the code now. Its getting really confusing to work
+I'm going to need to take time to do a re-write of a lot of the content without ai.

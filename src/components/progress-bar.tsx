@@ -1,7 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react';
 
-// ─── Animated white progress bar ────────────────────────────────────
 export const ProgressBar = ({
   value,
   label,
@@ -21,12 +20,12 @@ export const ProgressBar = ({
   return (
     <div className='flex flex-col gap-2'>
       <div className='flex items-center justify-between'>
-        <span className='text-primary-foreground/90 text-sm font-medium'>{label}</span>
-        <span className='text-primary-foreground text-xs font-bold tabular-nums'>{value}%</span>
+        <span className='text-sm font-medium'>{label}</span>
+        <span className='text-xs font-bold tabular-nums'>{value}%</span>
       </div>
       {/* Track */}
       <div
-        className='bg-primary-foreground/20 relative h-2.5 w-full overflow-hidden rounded-full'
+        className='bg-current/20 relative h-2.5 w-full overflow-hidden rounded-full'
         role='progressbar'
         aria-valuenow={value}
         aria-valuemin={0}
@@ -35,7 +34,7 @@ export const ProgressBar = ({
       >
         {/* Fill – white bar */}
         <div
-          className='bg-primary-foreground h-full rounded-full transition-all duration-700 ease-out'
+          className='bg-current h-full rounded-full transition-all duration-700 ease-out'
           style={{ width: `${animated}%` }}
         />
       </div>

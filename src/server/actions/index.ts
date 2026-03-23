@@ -1,11 +1,3 @@
-// Auth Actions
+export * from './actions';
 export * from './auth-actions';
-
-// Study Actions
-export * from './study-actions';
-
-// Level Actions
-export * from './level-actions';
-
-// Learn Actions
-export * from './learn-actions';
+export * from './admin-actions';

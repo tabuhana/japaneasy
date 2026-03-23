@@ -7,8 +7,8 @@ import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { submitReview } from '@/server/actions/study-actions';
-import { findUserWordsDue } from '@/server/queries/user-word-queries';
+import { submitReview } from '@/server/actions';
+import { findUserWordsDue } from '@/server/queries';
 
 type Cards = Awaited<ReturnType<typeof findUserWordsDue>>;
 
@@ -27,6 +27,7 @@ function shuffleArray<T>(array: T[]): T[] {
 
 export default function StudySession({ cards }: StudySessionProps) {
   const router = useRouter();
+  const [sessionCards] = useState(() => cards);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showResult, setShowResult] = useState(false);
@@ -35,14 +36,14 @@ export default function StudySession({ cards }: StudySessionProps) {
   const [score, setScore] = useState({ correct: 0, incorrect: 0 });
 
   const [optionsPerCard, setOptionsPerCard] = useState<string[][]>(() =>
-    cards.map(card => [card.word.english ?? ''])
+    sessionCards.map(card => [card.word.english ?? ''])
   );
 
   useEffect(() => {
     setOptionsPerCard(
-      cards.map((card, idx) => {
+      sessionCards.map((card, idx) => {
         const correctAnswer = card.word.english ?? '';
-        const wrongPool = cards
+        const wrongPool = sessionCards
           .filter((_, i) => i !== idx)
           .map(c => c.word.english ?? '')
           .filter(e => e !== correctAnswer);
@@ -50,14 +51,14 @@ export default function StudySession({ cards }: StudySessionProps) {
         return shuffleArray([correctAnswer, ...wrongOptions]);
       })
     );
-  }, [cards]);
+  }, [sessionCards]);
 
-  const card = cards[currentIndex];
+  const card = sessionCards[currentIndex];
   const options = optionsPerCard[currentIndex];
   const correctAnswer = card.word.english ?? '';
   const isCorrect = selectedAnswer === correctAnswer;
-  const progress = ((currentIndex + 1) / cards.length) * 100;
-  const isLastCard = currentIndex === cards.length - 1;
+  const progress = ((currentIndex + 1) / sessionCards.length) * 100;
+  const isLastCard = currentIndex === sessionCards.length - 1;
 
   const handleSelectAnswer = async (answer: string) => {
     if (showResult || isSubmitting) return;
@@ -113,7 +114,7 @@ export default function StudySession({ cards }: StudySessionProps) {
         {/* Header */}
         <div className="mb-4 flex items-center justify-between">
           <span className="text-muted-foreground text-sm font-medium">
-            {currentIndex + 1} / {cards.length}
+            {currentIndex + 1} / {sessionCards.length}
           </span>
           <button
             onClick={() => router.push('/')}

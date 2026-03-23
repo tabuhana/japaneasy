@@ -94,9 +94,10 @@ export function calculateNextReview(
     }
   }
 
-  // Calculate next review date
+  // Calculate next review date (normalized to midnight)
   const nextReviewDate = new Date(now);
   nextReviewDate.setDate(nextReviewDate.getDate() + newInterval);
+  nextReviewDate.setHours(0, 0, 0, 0);
 
   return {
     newStatus,

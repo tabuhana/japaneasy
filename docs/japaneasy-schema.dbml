@@ -10,12 +10,6 @@ Enum jlpt_level {
   N1
 }
 
-Enum unit_status {
-  locked
-  active
-  completed
-}
-
 Enum card_status {
   new
   learning
@@ -84,73 +78,50 @@ Table verification {
   }
 }
 
+Table user_subscription {
+  id text [pk]
+  user_id text [not null]
+}
+
 // ──────────────────────────────────────
 // Content tables (admin-managed)
 // ──────────────────────────────────────
 
-Table units {
-  id uuid [pk, default: `gen_random_uuid()`]
-  level jlpt_level [not null, unique]
-  title varchar(100) [not null]
-  description text
-  display_order integer [not null]
-  total_words integer [not null, default: 0]
-  is_published boolean [not null, default: false]
-  icon_url text
-  color varchar(20)
-  created_at timestamp [not null, default: `now()`]
-  updated_at timestamp [not null, default: `now()`]
-
-  indexes {
-    level [unique, name: 'idx_units_level']
-    display_order [name: 'idx_units_display_order']
-  }
-}
-
 Table words {
   id uuid [pk, default: `gen_random_uuid()`]
-  unit_id uuid [not null]
   kanji varchar(100)
   kana varchar(100) [not null]
   romaji varchar(100)
   english text [not null]
   part_of_speech varchar(50)
-  word_group integer [not null, note: 'Groups words into batches within a unit for gradual unlocking']
+  word_group integer [not null]
+  level jlpt_level [not null]
   display_order integer [not null, default: 0]
   created_at timestamp [not null, default: `now()`]
   updated_at timestamp [not null, default: `now()`]
 
   indexes {
-    unit_id [name: 'idx_words_unit']
-    (unit_id, word_group) [name: 'idx_words_unit_group']
-    (unit_id, display_order) [name: 'idx_words_unit_order']
+    level [name: 'idx_words_level']
+    (level, word_group) [name: 'idx_words_level_group']
+    (level, display_order) [name: 'idx_words_level_order']
   }
 }
 
-// ──────────────────────────────────────
-// Courses (future — not in MVP)
-//
 Table courses {
   id uuid [pk, default: `gen_random_uuid()`]
-  unit_id uuid [not null]
   title varchar(200) [not null]
   description text
   display_order integer [not null]
   is_published boolean [not null, default: false]
   created_at timestamp [not null, default: `now()`]
   updated_at timestamp [not null, default: `now()`]
-
-  indexes {
-    unit_id [name: 'idx_courses_unit']
-    (unit_id, display_order) [name: 'idx_courses_unit_order']
-  }
 }
 
 Table lessons {
   id uuid [pk, default: `gen_random_uuid()`]
   course_id uuid [not null]
-  title varchar(200) [not null]
   content text [not null]
+  image_url text
   display_order integer [not null]
   created_at timestamp [not null, default: `now()`]
   updated_at timestamp [not null, default: `now()`]
@@ -161,9 +132,7 @@ Table lessons {
   }
 }
 
-Ref: courses.unit_id > units.id [delete: cascade]
 Ref: lessons.course_id > courses.id [delete: cascade]
-// ──────────────────────────────────────
 
 // ──────────────────────────────────────
 // User progress tables
@@ -171,32 +140,15 @@ Ref: lessons.course_id > courses.id [delete: cascade]
 
 Table user_progress {
   user_id text [pk]
-  current_unit_id uuid [not null, note: 'The unit the user is currently working through']
   streak_count integer [not null, default: 0]
   last_review_date date
+  hiragana_quiz_passed boolean [not null, default: false]
+  katakana_quiz_passed boolean [not null, default: false]
   created_at timestamp [not null, default: `now()`]
   updated_at timestamp [not null, default: `now()`]
 }
 
-Table user_unit_progress {
-  id uuid [pk, default: `gen_random_uuid()`]
-  user_id text [not null]
-  unit_id uuid [not null]
-  status unit_status [not null, default: 'locked']
-  words_mastered_count integer [not null, default: 0]
-  current_word_group integer [not null, default: 1, note: 'The highest word group unlocked so far']
-  started_at timestamp
-  completed_at timestamp
-  created_at timestamp [not null, default: `now()`]
-  updated_at timestamp [not null, default: `now()`]
-
-  indexes {
-    (user_id, unit_id) [unique, name: 'unique_user_unit']
-    (user_id, status) [name: 'idx_userunits_user_status']
-  }
-}
-
-Table user_words {
+Table user_word_progress {
   id uuid [pk, default: `gen_random_uuid()`]
   user_id text [not null]
   word_id uuid [not null]
@@ -237,16 +189,12 @@ Table reviews {
   }
 }
 
-// ──────────────────────────────────────
-// Future: User course progress
-
  Table user_course_progress {
    id uuid [pk, default: `gen_random_uuid()`]
    user_id text [not null]
    course_id uuid [not null]
    current_lesson_id uuid
-   lessons_completed integer [not null, default: 0]
-  started_at timestamp
+   started_at timestamp
    completed_at timestamp
    created_at timestamp [not null, default: `now()`]
    updated_at timestamp [not null, default: `now()`]
@@ -258,7 +206,7 @@ Table reviews {
 
   Ref: user_course_progress.user_id > user.id [delete: cascade]
   Ref: user_course_progress.course_id > courses.id [delete: cascade]
- Ref: user_course_progress.current_lesson_id > lessons.id
+  Ref: user_course_progress.current_lesson_id > lessons.id
 // ──────────────────────────────────────
 
 // ──────────────────────────────────────
@@ -269,17 +217,11 @@ Table reviews {
 Ref: session.user_id > user.id [delete: cascade]
 Ref: account.user_id > user.id [delete: cascade]
 
-// Content
-Ref: words.unit_id > units.id [delete: cascade]
-
 // User progress
 Ref: user_progress.user_id > user.id [delete: cascade]
-Ref: user_progress.current_unit_id > units.id
-Ref: user_unit_progress.user_id > user.id [delete: cascade]
-Ref: user_unit_progress.unit_id > units.id [delete: cascade]
 
 // User words & reviews
-Ref: user_words.user_id > user.id [delete: cascade]
-Ref: user_words.word_id > words.id [delete: cascade]
+Ref: user_word_progress.user_id > user.id [delete: cascade]
+Ref: user_word_progress.word_id > words.id [delete: cascade]
 Ref: reviews.user_id > user.id [delete: cascade]
-Ref: reviews.user_word_id > user_words.id [delete: cascade]
+Ref: reviews.user_word_id > user_word_progress.id [delete: cascade]

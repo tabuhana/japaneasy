@@ -1,0 +1,262 @@
+{
+  "version": "1.0.0",
+  "darkMode": true,
+  "gridEnabling": true,
+  "detailLevel": "All",
+  "tablePositions": [
+    {
+      "name": "user",
+      "schemaName": "public",
+      "x": -720,
+      "y": 160
+    },
+    {
+      "name": "session",
+      "schemaName": "public",
+      "x": -1062.1013142971278,
+      "y": 281.2108633156555
+    },
+    {
+      "name": "account",
+      "schemaName": "public",
+      "x": -1108.5129353908778,
+      "y": -209.34514260847152
+    },
+    {
+      "name": "verification",
+      "schemaName": "public",
+      "x": -1403.3426192059728,
+      "y": -209.34514260847152
+    },
+    {
+      "name": "user_subscription",
+      "schemaName": "public",
+      "x": -718.564045539051,
+      "y": 432
+    },
+    {
+      "name": "words",
+      "schemaName": "public",
+      "x": 368,
+      "y": 376.76487798851906
+    },
+    {
+      "name": "courses",
+      "schemaName": "public",
+      "x": 64,
+      "y": 64.4703602475077
+    },
+    {
+      "name": "lessons",
+      "schemaName": "public",
+      "x": 368,
+      "y": 62.699894704120084
+    },
+    {
+      "name": "user_progress",
+      "schemaName": "public",
+      "x": -320.15619481873966,
+      "y": -256
+    },
+    {
+      "name": "user_word_progress",
+      "schemaName": "public",
+      "x": -319.03115454787564,
+      "y": 376
+    },
+    {
+      "name": "reviews",
+      "schemaName": "public",
+      "x": -319.57659739668,
+      "y": 888
+    },
+    {
+      "name": "user_course_progress",
+      "schemaName": "public",
+      "x": -320,
+      "y": 64
+    }
+  ],
+  "tableGroupCollapseStates": [],
+  "stickyNoteLayouts": [],
+  "referencePaths": [
+    {
+      "firstFieldNames": [
+        "course_id"
+      ],
+      "firstTableName": "lessons",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "courses",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "user_id"
+      ],
+      "firstTableName": "user_course_progress",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "user",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "course_id"
+      ],
+      "firstTableName": "user_course_progress",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "courses",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "current_lesson_id"
+      ],
+      "firstTableName": "user_course_progress",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "lessons",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": [
+        {
+          "x": 35.10115283575658,
+          "y": 208
+        },
+        {
+          "x": 35.10115283575658,
+          "y": 27.33122715639854
+        },
+        {
+          "x": 348,
+          "y": 27.33122715639854
+        }
+      ]
+    },
+    {
+      "firstFieldNames": [
+        "user_id"
+      ],
+      "firstTableName": "session",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "user",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "user_id"
+      ],
+      "firstTableName": "account",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "user",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "user_id"
+      ],
+      "firstTableName": "user_progress",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "user",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "user_id"
+      ],
+      "firstTableName": "user_word_progress",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "user",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "word_id"
+      ],
+      "firstTableName": "user_word_progress",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "words",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "user_id"
+      ],
+      "firstTableName": "reviews",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "user",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "user_word_id"
+      ],
+      "firstTableName": "reviews",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "user_word_progress",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    }
+  ]
+}

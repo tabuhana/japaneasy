@@ -235,11 +235,10 @@ describe('SRS Algorithm', () => {
 
         const expectedDate = new Date(now);
         expectedDate.setDate(expectedDate.getDate() + result.newInterval);
+        expectedDate.setHours(0, 0, 0, 0);
 
-        // Allow 1 second difference for test execution time
-        expect(Math.abs(result.nextReviewDate.getTime() - expectedDate.getTime())).toBeLessThan(
-          1000
-        );
+        // Dates should match exactly since both are normalized to midnight
+        expect(result.nextReviewDate.getTime()).toBe(expectedDate.getTime());
       });
     });
   });
