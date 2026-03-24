@@ -90,6 +90,10 @@
   --orange-dark: oklch(0.55 0.22 30);
   --peach: oklch(0.95 0.05 60);
   --cream: oklch(0.98 0.02 80);
+  --green-light: oklch(0.92 0.08 145);
+  --green-medium: oklch(0.65 0.18 145);
+  --purple-light: oklch(0.94 0.06 305);
+  --purple-medium: oklch(0.50 0.22 305);
 }
 
 .dark {
