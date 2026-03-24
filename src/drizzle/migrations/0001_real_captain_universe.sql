@@ -1,0 +1,1 @@
+ALTER TABLE "user_word_progress" ADD COLUMN "streak_count" integer DEFAULT 0 NOT NULL;

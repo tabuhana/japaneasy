@@ -68,6 +68,7 @@ export const userWordProgress = pgTable(
     repetitions: integer('repetitions').notNull().default(0),
     nextReviewDate: timestamp('next_review_date').notNull(),
     timesCorrect: integer('times_correct').notNull().default(0),
+    streakCount: integer('streak_count').notNull().default(0),
     timesIncorrect: integer('times_incorrect').notNull().default(0),
     lastReviewedAt: timestamp('last_reviewed_at'),
     addedAt: timestamp('added_at').defaultNow().notNull(),

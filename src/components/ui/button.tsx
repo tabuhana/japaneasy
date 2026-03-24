@@ -19,8 +19,8 @@ const buttonVariants = cva(
         dangerOutline: "bg-white text-rose-500 hover:bg-slate-100",
         super: "bg-indigo-500 text-primary-foreground hover:bg-indigo-500/90 border-indigo-600 border-b-4 active:border-b-0",
         superOutline: "bg-white text-indigo-500 hover:bg-slate-100",
-        ghost: "bg-transparent text-slate-500 border-transparent border-0 hover:bg-slate-100",
-        sidebar: "bg-transparent text-slate-500 border-2 border-transparent hover:bg-slate-100 transition-none",
+        ghost: "bg-transparent text-slate-500 border-transparent border-0 hover:bg-accent/10",
+        sidebar: "bg-transparent text-slate-500 border-2 border-transparent hover:bg-orange-500/15 hover:text-orange-500 transition-none",
         sidebarOutline: "bg-orange-500/15 text-orange-500 border-orange-300 border-2 hover:bg-orange-500/20 transition-none"
       },
       size: {

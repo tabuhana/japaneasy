@@ -1,3 +1,11 @@
+export type WordOfTheDay = {
+  word: string;
+  meaning: string;
+  furigana: string;
+  romaji: string;
+  level: number;
+};
+
 export type ActionResponse<T = void> = {
   success: boolean;
   message: string;
