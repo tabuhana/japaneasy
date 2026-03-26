@@ -1,7 +1,6 @@
 import { redirect } from 'next/navigation';
 import { getUser } from '@/server/actions/auth-actions';
 
-import { Header } from '@/components/header';
 import { Sidebar } from '@/components/sidebar';
 
 export default async function PlatformLayout({ children }: { children: React.ReactNode }) {

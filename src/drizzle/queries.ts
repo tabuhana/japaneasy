@@ -7,25 +7,19 @@ import { and, asc, eq, isNull, lte, sql } from 'drizzle-orm';
 import db from '@/drizzle';
 import { userProgress, userWordProgress, words } from '@/drizzle/schema';
 
-// ── User Progress Queries ──
+export const getUserProgress = cache(async () => {
+  const user = await getUser();
 
-export const getUserProgress = cache(async (userId: string) => {
-  const [progress] = await db
-    .select()
-    .from(userProgress)
-    .where(eq(userProgress.userId, userId))
-    .limit(1);
+  if (!user) {
+    return null;
+  }
 
-  return progress ?? null;
+  const results = await db.query.userProgress.findFirst({
+    where: eq(userProgress.userId, user.id),
+  });
+
+  return results;
 });
-
-// ── User Word Queries ──
-
-function endOfToday() {
-  const d = new Date();
-  d.setHours(23, 59, 59, 999);
-  return d;
-}
 
 export const getUserDictionary = cache(async (userId: string) => {
   const results = await db.query.userWordProgress.findMany({
@@ -36,4 +30,37 @@ export const getUserDictionary = cache(async (userId: string) => {
   });
 
   return results;
+});
+
+export const getUserNewWords = cache(async () => {
+  const user = await getUser();
+
+  if (!user) {
+    return null;
+  }
+  const results = await db.query.userWordProgress.findMany({
+    where: and(eq(userWordProgress.userId, user.id), eq(userWordProgress.status, 'new')),
+    with: {
+      word: true,
+    },
+  });
+
+  return results;
+});
+
+export const getUserReviewsDue = cache(async () => {
+  const user = await getUser();
+
+  if (!user) {
+    return null;
+  }
+
+  const results = await db.query.userWordProgress.findMany({
+    where: and(
+      eq(userWordProgress.userId, user.id),
+      lte(userWordProgress.nextReviewDate, new Date())
+    ),
+  });
+
+  return results.length;
 });

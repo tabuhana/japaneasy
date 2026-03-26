@@ -16,7 +16,7 @@ export function WordOfTheDay({ word }: { word: WordOfTheDayType }) {
         <span className="text-muted-foreground text-sm font-normal">{today}</span>
       </div>
 
-      <div className="border-border bg-secondary rounded-sm border-2 p-6">
+      <div className="border-border bg-card rounded-sm border-2 p-6">
         <div className="flex justify-end">
           <span className="bg-primary text-primary-foreground rounded-2xl px-3 py-1 text-sm font-bold">
             {jlptLevel}

@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${cherryBomb.variable} ${nunito.variable} ${baloo.variable} bg-background min-h-screen antialiased font-nunito`}
+        className={`${geistSans.variable} ${geistMono.variable} ${cherryBomb.variable} ${baloo.variable} ${nunito.variable} bg-background font-nunito min-h-screen antialiased`}
       >
         {children}
       </body>

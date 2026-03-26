@@ -22,7 +22,7 @@ export const QuickPracticeCard = ({
     <Link
       href={href}
       className={cn(
-        'group border-border bg-secondary flex w-full items-center gap-4 rounded-sm border-2 p-4 text-left transition-all duration-300',
+        'group border-border bg-card flex w-full items-center gap-4 rounded-sm border-2 p-4 text-left transition-all duration-300',
         'hover:border-primary hover:scale-105] hover:shadow-lg'
       )}
     >

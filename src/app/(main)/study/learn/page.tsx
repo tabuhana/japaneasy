@@ -1,9 +1,13 @@
 import { redirect } from 'next/navigation';
 
-import { getNewCards } from '@/server/actions';
+import { getUserNewWords } from '@/drizzle/queries';
+
+import { LearnSession } from './learn-session';
 
 export default async function LearnPage() {
+  const newWords = await getUserNewWords();
 
+  if (!newWords) redirect('/study');
 
-  return <div>Learn Page</div>;
+  return <LearnSession words={newWords} />;
 }

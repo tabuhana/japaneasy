@@ -6,28 +6,28 @@ import { X } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { completeLearnSession } from '@/server/actions';
-import { findNewUserWords } from '@/server/queries';
+import { completeLearnSession } from '@/drizzle/mutations';
+import { getUserNewWords } from '@/drizzle/queries';
 
-type Cards = Awaited<ReturnType<typeof findNewUserWords>>;
+type NewWords = NonNullable<Awaited<ReturnType<typeof getUserNewWords>>>;
 
 interface LearnSessionProps {
-  cards: Cards;
+  words: NewWords;
 }
 
-export default function LearnSession({ cards }: LearnSessionProps) {
+export const LearnSession = ({ words }: LearnSessionProps) => {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const card = cards[currentIndex];
-  const isLastCard = currentIndex === cards.length - 1;
-  const progress = ((currentIndex + 1) / cards.length) * 100;
+  const word = words[currentIndex];
+  const isLastWord = currentIndex === words.length - 1;
+  const progress = ((currentIndex + 1) / words.length) * 100;
 
   const handleNext = async () => {
-    if (isLastCard) {
+    if (isLastWord) {
       setIsSubmitting(true);
-      const ids = cards.map(c => c.userWord.id);
+      const ids = words.map(w => w.wordId);
       await completeLearnSession(ids);
       router.push('/study');
     } else {
@@ -41,7 +41,7 @@ export default function LearnSession({ cards }: LearnSessionProps) {
         {/* Header */}
         <div className="mb-4 flex items-center justify-between">
           <span className="text-muted-foreground text-sm font-medium">
-            {currentIndex + 1} / {cards.length}
+            {currentIndex + 1} / {words.length}
           </span>
           <button
             onClick={() => router.push('/')}
@@ -63,16 +63,16 @@ export default function LearnSession({ cards }: LearnSessionProps) {
             <p className="text-muted-foreground mb-4 text-sm">New word</p>
             <div className="border-primary/30 inline-block rounded-2xl border-2 border-dashed p-6">
               <span className="text-foreground text-8xl">
-                {card.word.kanji ?? card.word.kana}
+                {word.word.kanji ?? word.word.kana}
               </span>
             </div>
           </div>
 
-          {card.word.kanji && (
-            <p className="text-primary mb-2 text-2xl">{card.word.kana}</p>
+          {word.word.kanji && (
+            <p className="text-primary mb-2 text-2xl">{word.word.kana}</p>
           )}
-          <p className="text-muted-foreground mb-4 text-lg">{card.word.romaji}</p>
-          <p className="text-foreground text-xl font-semibold">{card.word.english}</p>
+          <p className="text-muted-foreground mb-4 text-lg">{word.word.romaji}</p>
+          <p className="text-foreground text-xl font-semibold">{word.word.english}</p>
         </div>
 
         {/* Button */}
@@ -84,7 +84,7 @@ export default function LearnSession({ cards }: LearnSessionProps) {
           >
             {isSubmitting
               ? 'Loading...'
-              : isLastCard
+              : isLastWord
                 ? 'Start Studying'
                 : 'Got it'}
           </Button>

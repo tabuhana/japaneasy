@@ -1,10 +1,9 @@
 import { getWordOfTheDay } from '@/lib/word-of-the-day';
 import { Button } from '@/components/ui/button';
-import { Header } from '@/components/header';
 import { FeedWrapper } from '@/components/layout/feed-wrapper';
 import { StickyWrapper } from '@/components/layout/sticky-wrapper';
+import { NotificationsCard } from '@/components/notifications-card';
 import { ProgressBar } from '@/components/progress-bar';
-import { ProgressCard } from '@/components/progress-card';
 import { QuickPracticeCard } from '@/components/quick-practice-card';
 import { WordOfTheDay } from '@/components/word-of-the-day';
 
@@ -56,7 +55,7 @@ export default async function DashboardScreen() {
       <StickyWrapper>
         <div className='space-y-3'>
           <h2 className='font-baloo text-2xl font-bold'>Your Progress</h2>
-          <div className='border-border bg-secondary rounded-sm border-2 p-4'>
+          <div className='border-border bg-card rounded-sm border-2 p-4'>
             <div className='flex flex-col gap-2'>
               {progress.map(item => (
                 <ProgressBar
@@ -79,14 +78,14 @@ export default async function DashboardScreen() {
       </StickyWrapper>
       <FeedWrapper>
         <div className='flex flex-col gap-4'>
-          <Header />
+          <NotificationsCard />
           {word && <WordOfTheDay word={word} />}
           <section className='space-y-3'>
             <div className='font-baloo flex items-center justify-between font-bold'>
               <h2 className='text-2xl'>Courses</h2>
             </div>
 
-            <div className='bg-secondary font-baloo text-muted-foreground flex items-center justify-center gap-2 rounded-sm border-2 border-dashed py-16 font-semibold'>
+            <div className='bg-card font-baloo text-muted-foreground flex items-center justify-center gap-2 rounded-sm border-2 border-dashed py-16 font-semibold'>
               <Button
                 variant='ghost'
                 className='flex cursor-pointer flex-col gap-2 p-8'

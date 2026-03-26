@@ -9,15 +9,15 @@ export const Sidebar = ({ className }: { className?: string }) => {
   return (
     <div
       className={cn(
-        'bg-sidebar-accent top-0 left-0 flex h-full flex-col lg:fixed lg:w-64 px-4',
+        'bg-primary/10 top-0 left-0 flex h-full flex-col px-4 lg:fixed lg:w-64',
         className
       )}
     >
       <Link
         href='/'
-        className=' mb-4 flex items-center p-4'
+        className='mb-4 flex items-center p-4'
       >
-        <h1 className='font-cherry-bomb text-secondary text-outline text-4xl font-bold hover:text-primary transition-colors duration-300 ease-out'>
+        <h1 className='font-cherry-bomb text-background  text-outline hover:text-primary text-4xl font-bold transition-colors duration-300 ease-out'>
           Japaneasy
         </h1>
       </Link>
