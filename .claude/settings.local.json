@@ -6,7 +6,9 @@
       "Bash(npx tsc:*)",
       "Bash(ls:*)",
       "Bash(npx next:*)",
-      "Bash(npm list:*)"
+      "Bash(npm list:*)",
+      "Bash(pip install:*)",
+      "Bash(python:*)"
     ]
   }
 }
