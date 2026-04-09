@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Japaneasy is a Japanese language learning platform built with Next.js 16 (App Router) and React 19. It uses a spaced repetition system (SRS) for JLPT vocabulary study, with gamified progression through levels N5 to N1.
+Japaneasy is a Japanese language learning platform built with Next.js 16 (App Router) and React 19. It uses a spaced repetition system (SRS) for JLPT vocabulary study, with gamified progression through levels N5 to N1. Includes an admin panel for managing courses, lessons, and words.
 
 ## Commands
 
@@ -22,6 +22,7 @@ npm run db:generate           # Generate Drizzle migrations from schema
 npm run db:migrate            # Apply migrations to database
 npm run db:push               # Push schema directly (skips migration files)
 npm run db:studio             # Open Drizzle Studio visual browser
+npm run db:seed               # Seed database (bun run scripts/seed.ts)
 npm run db:verify-indexes     # Verify database indexes
 ```
 
@@ -30,7 +31,8 @@ npm run db:verify-indexes     # Verify database indexes
 ### Routing & Layout Groups
 
 The app uses Next.js App Router with route groups for layout separation:
-- `src/app/(main)/` — Protected pages: dashboard and study features (requires auth)
+- `src/app/(main)/` — Protected pages: dashboard, study (learn/review), dictionary, hiragana, katakana, settings
+- `src/app/admin/` — Admin panel: CRUD for courses, lessons, units, words (separate layout)
 - `src/app/auth/` — Public auth pages: signin, signup, password-reset
 
 Each group has its own layout, enabling different navigation and styling per context.
@@ -46,11 +48,10 @@ Auth API catch-all route: `src/app/api/auth/[...all]/route.ts`.
 - **ORM**: Drizzle ORM with PostgreSQL (`postgres` driver), max 10 connections
 - **Schema**: `src/drizzle/schema/` — split into multiple files, exported via `index.ts`
   - `auth-schema.ts` — Better Auth tables (user, session, account, verification)
-  - `enums.ts` — PostgreSQL enums: `jlptLevelEnum` (N5–N1), `levelStatusEnum`, `cardStatusEnum`
-  - `user-progress.ts` — Overall user progress (streak, active level)
-  - `word.ts` — Vocabulary master data (kanji, kana, romaji, english, level)
-  - `user-word.ts` — Per-user SRS card state (interval, easeFactor, repetitions, nextReviewDate)
-  - `user-level-progress.ts` — Per-level progress tracking (locked/active/completed)
+  - `enums.ts` — PostgreSQL enums: `jlptLevelEnum` (N5–N0), `cardStatusEnum`
+  - `course.ts` — Courses and lessons tables with relationships
+  - `user-progress.ts` — Three tables: `userProgress` (streak, kana quiz flags), `userCourseProgress` (per-course tracking), `userWordProgress` (SRS card state: interval, easeFactor, repetitions, nextReviewDate, streakCount)
+  - `word.ts` — Vocabulary master data (kanji, kana, romaji, english, partOfSpeech, wordGroup, level, displayOrder)
   - `review.ts` — Audit trail of all review events
 - **Client**: `src/drizzle/index.ts` — exports singleton `db` instance
 - **Migrations**: `src/drizzle/migrations/`
@@ -62,21 +63,28 @@ Auth API catch-all route: `src/app/api/auth/[...all]/route.ts`.
 Clean three-layer separation under `src/server/`:
 
 - **`actions/`** — Server actions (Next.js `'use server'`) consumed by the frontend:
-  - `study-actions.ts` — `getDueCards`, `submitReview`, `addNewWords`, `getStudyStats`
-  - `level-actions.ts` — `getAllLevelProgress`, `checkLevelTestEligibility`, `completeLevel`, `initializeAllLevels`, `getActiveLevelDetails`
+  - `actions.ts` — `getNewCards`, `completeLearnSession`, `getDueCards`
   - `auth-actions.ts` — `getUser`
-  - `user-actions.ts` — User management
-- **`queries/`** — Read-only database operations
-- **`mutations/`** — Write database operations
+  - `settings-actions.ts` — `updateName`, `changePassword`
+  - `admin-actions.ts` — Full CRUD for courses, words, and lessons
+- **`queries/`** — Read-only database operations (includes `admin-queries.ts`)
+- **`mutations/`** — Write database operations (includes `admin-mutations.ts`)
 
 ### SRS Algorithm
 
 Located in `src/lib/srs/`:
 - `algorithm.ts` — Core logic: `calculateNextReview(card, wasCorrect)` and `shouldAddNewWords(correctCount, totalCount)`
-- `constants.ts` — Configuration: learning intervals `[1, 3, 7]` days, ease factor range `1.3–3.0`, mastery threshold 60 days, accuracy threshold 80%, batch size 5 words
+- `constants.ts` — Configuration: learning intervals `[1, 3, 7]` days, graduating interval 7, ease factor range `1.3–3.0`, mastery threshold 60 days, accuracy threshold 80%, batch size 5 words
 - `__tests__/algorithm.test.ts` — Comprehensive Bun test suite
 
 **Card state machine**: `new → learning → reviewing → mastered`. Incorrect answers reset to learning. Ease factor decreases by 0.2 on failure.
+
+### Additional Libraries
+
+- `src/lib/word-of-the-day.ts` — Word of the day logic
+- `src/lib/hiragana-data.ts`, `src/lib/katakana-data.ts` — Kana character data for practice
+- `src/lib/validations/admin.ts` — Zod schemas for admin forms
+- `src/lib/types.ts` — Shared types (WordOfTheDay, ActionResponse, UnitProgress)
 
 ### UI Components
 
@@ -89,10 +97,13 @@ shadcn/ui pattern (new-york style) with components in `src/components/ui/`. Uses
 shadcn config is in `components.json`. Add new components with `npx shadcn@latest add <component>`.
 
 **Custom components** in `src/components/`:
-- `progress-bar.tsx` — Animated progress bar with staggered delay support
+- `progress-bar.tsx`, `progress-card.tsx` — Progress display components
 - `unit-card.tsx` — Collapsible JLPT level card with integrated progress bars and CTA
+- `sidebar.tsx`, `sidebar-item.tsx` — Main app navigation
+- `word-of-the-day.tsx`, `quick-practice-card.tsx`, `notifications-card.tsx` — Dashboard widgets
 - `mascot.tsx`, `logo.tsx` — Branding components
-- `layout/` — `header.tsx`, `feed-wrapper.tsx`, `sticky-wrapper.tsx`
+- `admin/` — Admin UI: sidebar, CRUD forms (course, lesson, unit, word), data-table, pagination, delete-dialog
+- `layout/` — `feed-wrapper.tsx`, `sticky-wrapper.tsx`
 
 ### Styling
 
@@ -101,6 +112,15 @@ shadcn config is in `components.json`. Add new components with `npx shadcn@lates
 - Light/dark mode via `.dark` class selector (next-themes)
 - Custom brand colors: `--orange-light`, `--orange-medium`, `--orange-dark`, `--peach`, `--cream`
 - Three fonts: Geist (sans), Geist Mono, Cherry Bomb One (display/branding)
+
+### Scripts
+
+`scripts/` contains seed data and utilities:
+- `seed.ts` — Database seeder (run via `npm run db:seed`)
+- `verify-indexes.ts` — Database index verification
+- `sort_by_frequency.py` — Python script to sort words by frequency
+- `verify_words.py` — Python script to verify word data
+- CSV files — Vocabulary data for seeding (N5 words)
 
 ### Path Aliases
 
