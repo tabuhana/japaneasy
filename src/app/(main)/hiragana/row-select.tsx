@@ -37,22 +37,26 @@ export default function RowSelect({ onStart }: RowSelectProps) {
   };
 
   return (
-    <div className="mx-auto w-full max-w-2xl px-4 py-8">
-      <h1 className="text-foreground mb-2 text-2xl font-bold">Hiragana Practice</h1>
-      <p className="text-muted-foreground mb-6 text-sm">
+    <div className='mx-auto w-full max-w-2xl px-4 py-8'>
+      <h1 className='text-foreground mb-2 text-2xl font-bold'>Hiragana Practice</h1>
+      <p className='text-muted-foreground mb-6 text-sm'>
         Select the rows you want to practice, then start.
       </p>
 
-      <div className="mb-6 flex items-center justify-between">
-        <Button variant="default" size="sm" onClick={toggleAll}>
+      <div className='mb-6 flex items-center justify-between'>
+        <Button
+          variant='default'
+          size='sm'
+          onClick={toggleAll}
+        >
           {allSelected ? 'Deselect All' : 'Select All'}
         </Button>
-        <span className="text-muted-foreground text-sm">
+        <span className='text-muted-foreground text-sm'>
           {selected.size} of {HIRAGANA_ROWS.length} selected
         </span>
       </div>
 
-      <div className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
+      <div className='mb-8 grid grid-cols-2 gap-3 sm:grid-cols-3'>
         {HIRAGANA_ROWS.map(row => {
           const isSelected = selected.has(row.id);
           return (
@@ -67,12 +71,12 @@ export default function RowSelect({ onStart }: RowSelectProps) {
               )}
             >
               {isSelected && (
-                <div className="bg-primary absolute top-2 right-2 flex h-5 w-5 items-center justify-center rounded-full">
-                  <Check className="text-primary-foreground h-3 w-3" />
+                <div className='bg-primary absolute top-2 right-2 flex h-5 w-5 items-center justify-center rounded-full'>
+                  <Check className='text-primary-foreground h-3 w-3' />
                 </div>
               )}
-              <p className="text-foreground mb-1 text-sm font-semibold">{row.name}</p>
-              <p className="text-muted-foreground text-lg tracking-widest">
+              <p className='text-foreground mb-1 text-sm font-semibold'>{row.name}</p>
+              <p className='text-muted-foreground text-lg tracking-widest'>
                 {row.characters.map(c => c.kana).join(' ')}
               </p>
             </button>
@@ -83,7 +87,7 @@ export default function RowSelect({ onStart }: RowSelectProps) {
       <Button
         onClick={() => onStart(Array.from(selected))}
         disabled={selected.size === 0}
-        className="w-full py-6 text-base font-semibold"
+        className='w-full py-6 text-base font-semibold'
       >
         Start Practice
       </Button>

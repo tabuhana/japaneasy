@@ -1,20 +1,30 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
+import { createCourseAction, updateCourseAction } from '@/server/actions/admin-actions';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
-import { createCourseAction, updateCourseAction } from '@/server/actions/admin-actions';
-
 import { courseSchema } from '@/lib/validations/admin';
-
 import type { CourseFormValues } from '@/lib/validations/admin';
-
 import { Button } from '@/components/ui/button';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 
 interface CourseFormProps {
@@ -51,22 +61,31 @@ export function CourseForm({ initialData, units }: CourseFormProps) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-lg space-y-4">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className='max-w-lg space-y-4'
+      >
         <FormField
           control={form.control}
-          name="unitId"
+          name='unitId'
           render={({ field }) => (
             <FormItem>
               <FormLabel>Unit</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+              >
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select unit" />
+                    <SelectValue placeholder='Select unit' />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
                   {units.map(u => (
-                    <SelectItem key={u.id} value={u.id}>
+                    <SelectItem
+                      key={u.id}
+                      value={u.id}
+                    >
                       {u.level} — {u.title}
                     </SelectItem>
                   ))}
@@ -78,7 +97,7 @@ export function CourseForm({ initialData, units }: CourseFormProps) {
         />
         <FormField
           control={form.control}
-          name="title"
+          name='title'
           render={({ field }) => (
             <FormItem>
               <FormLabel>Title</FormLabel>
@@ -91,7 +110,7 @@ export function CourseForm({ initialData, units }: CourseFormProps) {
         />
         <FormField
           control={form.control}
-          name="description"
+          name='description'
           render={({ field }) => (
             <FormItem>
               <FormLabel>Description</FormLabel>
@@ -104,12 +123,16 @@ export function CourseForm({ initialData, units }: CourseFormProps) {
         />
         <FormField
           control={form.control}
-          name="displayOrder"
+          name='displayOrder'
           render={({ field }) => (
             <FormItem>
               <FormLabel>Display Order</FormLabel>
               <FormControl>
-                <Input type="number" {...field} onChange={e => field.onChange(Number(e.target.value))} />
+                <Input
+                  type='number'
+                  {...field}
+                  onChange={e => field.onChange(Number(e.target.value))}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -117,27 +140,38 @@ export function CourseForm({ initialData, units }: CourseFormProps) {
         />
         <FormField
           control={form.control}
-          name="isPublished"
+          name='isPublished'
           render={({ field }) => (
-            <FormItem className="flex items-center gap-2">
+            <FormItem className='flex items-center gap-2'>
               <FormControl>
                 <input
-                  type="checkbox"
+                  type='checkbox'
                   checked={field.value}
                   onChange={field.onChange}
-                  className="h-4 w-4"
+                  className='h-4 w-4'
                 />
               </FormControl>
-              <FormLabel className="!mt-0">Published</FormLabel>
+              <FormLabel className='!mt-0'>Published</FormLabel>
               <FormMessage />
             </FormItem>
           )}
         />
-        <div className="flex gap-2 pt-4">
-          <Button type="submit" disabled={form.formState.isSubmitting}>
-            {form.formState.isSubmitting ? 'Saving...' : initialData ? 'Update Course' : 'Create Course'}
+        <div className='flex gap-2 pt-4'>
+          <Button
+            type='submit'
+            disabled={form.formState.isSubmitting}
+          >
+            {form.formState.isSubmitting
+              ? 'Saving...'
+              : initialData
+                ? 'Update Course'
+                : 'Create Course'}
           </Button>
-          <Button type="button" variant="default" onClick={() => router.push('/admin/courses')}>
+          <Button
+            type='button'
+            variant='default'
+            onClick={() => router.push('/admin/courses')}
+          >
             Cancel
           </Button>
         </div>

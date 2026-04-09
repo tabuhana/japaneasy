@@ -44,20 +44,22 @@ export const KanjiUpgradesCard = () => {
         {visibleUpgrades.map(card => (
           <div
             key={card.id}
-            className='group relative flex cursor-pointer flex-col items-center gap-1.5 rounded-xl border border-super/30 bg-[#FAF5FF] p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-super hover:shadow-md'
+            className='group border-super/30 hover:border-super relative flex cursor-pointer flex-col items-center gap-1.5 rounded-xl border bg-[#FAF5FF] p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md'
           >
-            <div className='absolute top-2 right-2 flex h-5 w-5 items-center justify-center rounded-full bg-super text-[10px] font-bold text-background'>
+            <div className='bg-super text-background absolute top-2 right-2 flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold'>
               ↑
             </div>
             <span className='text-sm font-bold'>{card.reading}</span>
-            <span className='text-2xl text-super'>→ {card.kanji}</span>
+            <span className='text-super text-2xl'>→ {card.kanji}</span>
             <span className='text-xs text-[#B8956A]'>{card.meaning}</span>
           </div>
         ))}
       </div>
 
       {remainingCount > 0 && (
-        <p className='mt-4 text-center text-sm text-muted-foreground'>+{remainingCount} more upgradeable cards</p>
+        <p className='text-muted-foreground mt-4 text-center text-sm'>
+          +{remainingCount} more upgradeable cards
+        </p>
       )}
     </div>
   );

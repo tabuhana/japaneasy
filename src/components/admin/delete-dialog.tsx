@@ -35,9 +35,19 @@ export function DeleteDialog({ title, description, onConfirm, trigger }: DeleteD
   };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog
+      open={open}
+      onOpenChange={setOpen}
+    >
       <DialogTrigger asChild>
-        {trigger ?? <Button variant="danger" size="sm">Delete</Button>}
+        {trigger ?? (
+          <Button
+            variant='danger'
+            size='sm'
+          >
+            Delete
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
@@ -45,10 +55,18 @@ export function DeleteDialog({ title, description, onConfirm, trigger }: DeleteD
           <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button variant="default" onClick={() => setOpen(false)} disabled={loading}>
+          <Button
+            variant='default'
+            onClick={() => setOpen(false)}
+            disabled={loading}
+          >
             Cancel
           </Button>
-          <Button variant="danger" onClick={handleConfirm} disabled={loading}>
+          <Button
+            variant='danger'
+            onClick={handleConfirm}
+            disabled={loading}
+          >
             {loading ? 'Deleting...' : 'Delete'}
           </Button>
         </DialogFooter>

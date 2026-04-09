@@ -17,7 +17,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
         href='/'
         className='mb-4 flex items-center p-4'
       >
-        <h1 className='font-cherry-bomb text-background  text-outline hover:text-primary text-4xl font-bold transition-colors duration-300 ease-out'>
+        <h1 className='font-cherry-bomb text-background text-outline hover:text-primary text-4xl font-bold transition-colors duration-300 ease-out'>
           Japaneasy
         </h1>
       </Link>

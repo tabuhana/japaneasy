@@ -27,7 +27,7 @@ export function DataTable<T extends { id: string }>({
   emptyMessage = 'No data found.',
 }: DataTableProps<T>) {
   return (
-    <div className="rounded-md border">
+    <div className='rounded-md border'>
       <Table>
         <TableHeader>
           <TableRow>
@@ -39,7 +39,10 @@ export function DataTable<T extends { id: string }>({
         <TableBody>
           {data.length === 0 ? (
             <TableRow>
-              <TableCell colSpan={columns.length} className="h-24 text-center text-muted-foreground">
+              <TableCell
+                colSpan={columns.length}
+                className='text-muted-foreground h-24 text-center'
+              >
                 {emptyMessage}
               </TableCell>
             </TableRow>
@@ -48,7 +51,11 @@ export function DataTable<T extends { id: string }>({
               <TableRow key={row.id}>
                 {columns.map((col, i) => (
                   <TableCell key={i}>
-                    {col.cell ? col.cell(row) : col.accessorKey ? String(row[col.accessorKey] ?? '') : ''}
+                    {col.cell
+                      ? col.cell(row)
+                      : col.accessorKey
+                        ? String(row[col.accessorKey] ?? '')
+                        : ''}
                   </TableCell>
                 ))}
               </TableRow>

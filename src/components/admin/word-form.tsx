@@ -1,20 +1,30 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
+import { createWordAction, updateWordAction } from '@/server/actions/admin-actions';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
-import { createWordAction, updateWordAction } from '@/server/actions/admin-actions';
-
 import { wordSchema } from '@/lib/validations/admin';
-
 import type { WordFormValues } from '@/lib/validations/admin';
-
 import { Button } from '@/components/ui/button';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 interface WordFormProps {
   initialData?: WordFormValues & { id: string };
@@ -53,22 +63,31 @@ export function WordForm({ initialData, units }: WordFormProps) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-lg space-y-4">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className='max-w-lg space-y-4'
+      >
         <FormField
           control={form.control}
-          name="unitId"
+          name='unitId'
           render={({ field }) => (
             <FormItem>
               <FormLabel>Unit</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+              >
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select unit" />
+                    <SelectValue placeholder='Select unit' />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
                   {units.map(u => (
-                    <SelectItem key={u.id} value={u.id}>
+                    <SelectItem
+                      key={u.id}
+                      value={u.id}
+                    >
                       {u.level} — {u.title}
                     </SelectItem>
                   ))}
@@ -78,15 +97,18 @@ export function WordForm({ initialData, units }: WordFormProps) {
             </FormItem>
           )}
         />
-        <div className="grid grid-cols-2 gap-4">
+        <div className='grid grid-cols-2 gap-4'>
           <FormField
             control={form.control}
-            name="kanji"
+            name='kanji'
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Kanji</FormLabel>
                 <FormControl>
-                  <Input {...field} value={field.value ?? ''} />
+                  <Input
+                    {...field}
+                    value={field.value ?? ''}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -94,27 +116,33 @@ export function WordForm({ initialData, units }: WordFormProps) {
           />
           <FormField
             control={form.control}
-            name="kana"
+            name='kana'
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Kana</FormLabel>
                 <FormControl>
-                  <Input {...field} value={field.value ?? ''} />
+                  <Input
+                    {...field}
+                    value={field.value ?? ''}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className='grid grid-cols-2 gap-4'>
           <FormField
             control={form.control}
-            name="romaji"
+            name='romaji'
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Romaji</FormLabel>
                 <FormControl>
-                  <Input {...field} value={field.value ?? ''} />
+                  <Input
+                    {...field}
+                    value={field.value ?? ''}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -122,27 +150,33 @@ export function WordForm({ initialData, units }: WordFormProps) {
           />
           <FormField
             control={form.control}
-            name="english"
+            name='english'
             render={({ field }) => (
               <FormItem>
                 <FormLabel>English</FormLabel>
                 <FormControl>
-                  <Input {...field} value={field.value ?? ''} />
+                  <Input
+                    {...field}
+                    value={field.value ?? ''}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
         </div>
-        <div className="grid grid-cols-3 gap-4">
+        <div className='grid grid-cols-3 gap-4'>
           <FormField
             control={form.control}
-            name="partOfSpeech"
+            name='partOfSpeech'
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Part of Speech</FormLabel>
                 <FormControl>
-                  <Input {...field} value={field.value ?? ''} />
+                  <Input
+                    {...field}
+                    value={field.value ?? ''}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -150,12 +184,19 @@ export function WordForm({ initialData, units }: WordFormProps) {
           />
           <FormField
             control={form.control}
-            name="wordGroup"
+            name='wordGroup'
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Word Group</FormLabel>
                 <FormControl>
-                  <Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value ? Number(e.target.value) : undefined)} />
+                  <Input
+                    type='number'
+                    {...field}
+                    value={field.value ?? ''}
+                    onChange={e =>
+                      field.onChange(e.target.value ? Number(e.target.value) : undefined)
+                    }
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -163,23 +204,38 @@ export function WordForm({ initialData, units }: WordFormProps) {
           />
           <FormField
             control={form.control}
-            name="displayOrder"
+            name='displayOrder'
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Display Order</FormLabel>
                 <FormControl>
-                  <Input type="number" {...field} onChange={e => field.onChange(Number(e.target.value))} />
+                  <Input
+                    type='number'
+                    {...field}
+                    onChange={e => field.onChange(Number(e.target.value))}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
         </div>
-        <div className="flex gap-2 pt-4">
-          <Button type="submit" disabled={form.formState.isSubmitting}>
-            {form.formState.isSubmitting ? 'Saving...' : initialData ? 'Update Word' : 'Create Word'}
+        <div className='flex gap-2 pt-4'>
+          <Button
+            type='submit'
+            disabled={form.formState.isSubmitting}
+          >
+            {form.formState.isSubmitting
+              ? 'Saving...'
+              : initialData
+                ? 'Update Word'
+                : 'Create Word'}
           </Button>
-          <Button type="button" variant="default" onClick={() => router.push('/admin/words')}>
+          <Button
+            type='button'
+            variant='default'
+            onClick={() => router.push('/admin/words')}
+          >
             Cancel
           </Button>
         </div>

@@ -29,13 +29,16 @@ export function WordFilter({ units, currentUnitId }: WordFilterProps) {
         }
       }}
     >
-      <SelectTrigger className="w-64">
-        <SelectValue placeholder="Filter by unit" />
+      <SelectTrigger className='w-64'>
+        <SelectValue placeholder='Filter by unit' />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="all">All Units</SelectItem>
+        <SelectItem value='all'>All Units</SelectItem>
         {units.map(u => (
-          <SelectItem key={u.id} value={u.id}>
+          <SelectItem
+            key={u.id}
+            value={u.id}
+          >
             {u.level} — {u.title}
           </SelectItem>
         ))}

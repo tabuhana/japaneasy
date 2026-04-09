@@ -30,31 +30,31 @@ export function Pagination({ page, totalPages, total, pageSize }: PaginationProp
   const end = Math.min(page * pageSize, total);
 
   return (
-    <div className="flex items-center justify-between pt-4">
-      <p className="text-sm text-muted-foreground">
+    <div className='flex items-center justify-between pt-4'>
+      <p className='text-muted-foreground text-sm'>
         Showing {start}–{end} of {total}
       </p>
-      <div className="flex items-center gap-2">
+      <div className='flex items-center gap-2'>
         <Button
-          variant="default"
-          size="sm"
+          variant='default'
+          size='sm'
           onClick={() => navigate(page - 1)}
           disabled={page <= 1}
         >
-          <ChevronLeft className="h-4 w-4" />
+          <ChevronLeft className='h-4 w-4' />
           Previous
         </Button>
-        <span className="text-sm text-muted-foreground">
+        <span className='text-muted-foreground text-sm'>
           {page} / {totalPages}
         </span>
         <Button
-          variant="default"
-          size="sm"
+          variant='default'
+          size='sm'
           onClick={() => navigate(page + 1)}
           disabled={page >= totalPages}
         >
           Next
-          <ChevronRight className="h-4 w-4" />
+          <ChevronRight className='h-4 w-4' />
         </Button>
       </div>
     </div>

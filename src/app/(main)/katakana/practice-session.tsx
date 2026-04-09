@@ -53,32 +53,32 @@ export default function PracticeSession({ characters, onComplete }: PracticeSess
   const percentage = total > 0 ? Math.round((correct / total) * 100) : 0;
 
   return (
-    <div className="flex min-h-[calc(100vh-4rem)] flex-col px-4 py-6">
-      <div className="mx-auto w-full max-w-3xl">
+    <div className='flex min-h-[calc(100vh-4rem)] flex-col px-4 py-6'>
+      <div className='mx-auto w-full max-w-3xl'>
         {/* Header */}
-        <div className="mb-6 flex items-center justify-between">
-          <p className="text-muted-foreground text-sm font-medium">
+        <div className='mb-6 flex items-center justify-between'>
+          <p className='text-muted-foreground text-sm font-medium'>
             Type the romaji for each character
           </p>
           <button
             onClick={onComplete}
-            className="text-muted-foreground hover:text-foreground transition-colors"
+            className='text-muted-foreground hover:text-foreground transition-colors'
           >
-            <X className="h-5 w-5" />
+            <X className='h-5 w-5' />
           </button>
         </div>
 
         {/* Score summary */}
-        <div className="text-muted-foreground mb-6 flex gap-4 text-sm">
+        <div className='text-muted-foreground mb-6 flex gap-4 text-sm'>
           <span>
             {answered} / {total} answered
           </span>
-          <span className="text-green-600">{correct} correct</span>
-          <span className="text-red-500">{incorrect} incorrect</span>
+          <span className='text-green-600'>{correct} correct</span>
+          <span className='text-red-500'>{incorrect} incorrect</span>
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5">
+        <div className='grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5'>
           {characters.map((char, index) => {
             const result = results[index];
 
@@ -92,15 +92,15 @@ export default function PracticeSession({ characters, onComplete }: PracticeSess
                   result == null && 'border-border'
                 )}
               >
-                <span className="text-foreground mb-2 text-4xl">{char.kana}</span>
+                <span className='text-foreground mb-2 text-4xl'>{char.kana}</span>
                 <Input
                   value={answers[index] ?? ''}
                   onChange={e => handleChange(index, e.target.value)}
                   onBlur={() => handleBlur(index)}
                   disabled={result === true || completed}
-                  placeholder="..."
-                  autoComplete="off"
-                  className="h-8 text-center text-sm"
+                  placeholder='...'
+                  autoComplete='off'
+                  className='h-8 text-center text-sm'
                 />
               </div>
             );
@@ -109,10 +109,10 @@ export default function PracticeSession({ characters, onComplete }: PracticeSess
 
         {/* Complete button */}
         {allAnswered && correct === total && !completed && (
-          <div className="animate-in fade-in mt-8 flex justify-center duration-300">
+          <div className='animate-in fade-in mt-8 flex justify-center duration-300'>
             <Button
               onClick={() => setCompleted(true)}
-              className="px-8 py-6 text-base font-semibold"
+              className='px-8 py-6 text-base font-semibold'
             >
               Complete
             </Button>
@@ -121,20 +121,20 @@ export default function PracticeSession({ characters, onComplete }: PracticeSess
 
         {/* Results section */}
         {completed && (
-          <div className="animate-in fade-in slide-in-from-bottom-4 mt-8 flex flex-col items-center text-center duration-300">
-            <p className="text-muted-foreground mb-2 text-sm">Session complete</p>
-            <p className="text-foreground mb-6 text-4xl font-bold">{percentage}%</p>
-            <div className="flex gap-3">
+          <div className='animate-in fade-in slide-in-from-bottom-4 mt-8 flex flex-col items-center text-center duration-300'>
+            <p className='text-muted-foreground mb-2 text-sm'>Session complete</p>
+            <p className='text-foreground mb-6 text-4xl font-bold'>{percentage}%</p>
+            <div className='flex gap-3'>
               <Button
                 onClick={onComplete}
-                variant="default"
-                className="px-8 py-6 text-base font-semibold"
+                variant='default'
+                className='px-8 py-6 text-base font-semibold'
               >
                 Practice Again
               </Button>
               <Button
                 onClick={() => router.push('/')}
-                className="px-8 py-6 text-base font-semibold"
+                className='px-8 py-6 text-base font-semibold'
               >
                 Back to Home
               </Button>

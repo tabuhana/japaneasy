@@ -29,13 +29,16 @@ export function LessonFilter({ courses, currentCourseId }: LessonFilterProps) {
         }
       }}
     >
-      <SelectTrigger className="w-64">
-        <SelectValue placeholder="Filter by course" />
+      <SelectTrigger className='w-64'>
+        <SelectValue placeholder='Filter by course' />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="all">All Courses</SelectItem>
+        <SelectItem value='all'>All Courses</SelectItem>
         {courses.map(c => (
-          <SelectItem key={c.id} value={c.id}>
+          <SelectItem
+            key={c.id}
+            value={c.id}
+          >
             {c.unitLevel} — {c.title}
           </SelectItem>
         ))}

@@ -1,7 +1,8 @@
 import { redirect } from 'next/navigation';
 import { getUser } from '@/server/actions/auth-actions';
 
-import { Sidebar } from '@/components/sidebar';
+import { Topnav } from '@/components/layout/nav';
+import { Providers } from '@/components/providers/mobile-nav-provider';
 
 export default async function PlatformLayout({ children }: { children: React.ReactNode }) {
   const user = await getUser();
@@ -10,9 +11,10 @@ export default async function PlatformLayout({ children }: { children: React.Rea
 
   return (
     <>
-      <Sidebar className='hidden lg:flex' />
-      <main className='h-full pt-14 lg:pt-0 lg:pl-64'>
-        <div className='mx-auto h-full max-w-6xl pt-6'>{children}</div>
+      <Topnav />
+      <Providers />
+      <main className='h-full'>
+        <div className='mx-auto h-full max-w-7xl pt-6'>{children}</div>
       </main>
     </>
   );

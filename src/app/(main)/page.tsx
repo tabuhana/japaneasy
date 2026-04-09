@@ -2,10 +2,14 @@ import { getWordOfTheDay } from '@/lib/word-of-the-day';
 import { Button } from '@/components/ui/button';
 import { FeedWrapper } from '@/components/layout/feed-wrapper';
 import { StickyWrapper } from '@/components/layout/sticky-wrapper';
-import { NotificationsCard } from '@/components/notifications-card';
 import { ProgressBar } from '@/components/progress-bar';
 import { QuickPracticeCard } from '@/components/quick-practice-card';
 import { WordOfTheDay } from '@/components/word-of-the-day';
+
+import { KanjiUpgradesCard } from './_components/kanji-upgrades-card';
+import { KatakanaCard } from './_components/katakana-card';
+import { LearnCard } from './_components/learn-card';
+import { ReviewCard } from './_components/review-card';
 
 export default async function DashboardScreen() {
   const practices = [
@@ -50,6 +54,27 @@ export default async function DashboardScreen() {
     },
   ];
 
+  const reviewsDueCount = 15;
+  const newCardsAvailable = 15;
+
+  const hiraganaQuiz = {
+    totalCharacters: 46,
+    correctAnswers: 32,
+    completed: false,
+    bestScore: 78,
+    lastAttempt: '2026-03-22T14:00:00Z',
+  };
+
+  const katakanaQuiz = {
+    totalCharacters: 46,
+    correctAnswers: 0,
+    completed: false,
+    bestScore: null as number | null,
+    lastAttempt: null as string | null,
+  };
+
+  const kanaComplete = true;
+
   return (
     <div className='flex flex-row-reverse gap-12 px-6'>
       <StickyWrapper>
@@ -78,8 +103,32 @@ export default async function DashboardScreen() {
       </StickyWrapper>
       <FeedWrapper>
         <div className='flex flex-col gap-4'>
-          <NotificationsCard />
           {word && <WordOfTheDay word={word} />}
+          {kanaComplete ? (
+            <section className='space-y-3'>
+              <ReviewCard reviewsDueCount={reviewsDueCount} />
+              <LearnCard newCardsAvailable={newCardsAvailable} />
+
+              <KanjiUpgradesCard />
+            </section>
+          ) : (
+            <section className='space-y-3'>
+              <KatakanaCard
+                title='Hiragana'
+                description='Master the basic Japanese alphabet'
+                character='あ'
+                quiz={hiraganaQuiz}
+                href='/study/hiragana-quiz'
+              />
+              <KatakanaCard
+                title='Katakana'
+                description='Master the secondary Japanese alphabet'
+                character='カ'
+                quiz={katakanaQuiz}
+                href='/study/katakana-quiz'
+              />
+            </section>
+          )}
           <section className='space-y-3'>
             <div className='font-baloo flex items-center justify-between font-bold'>
               <h2 className='text-2xl'>Courses</h2>

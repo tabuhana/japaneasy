@@ -1,12 +1,12 @@
 'use client';
 
-import { ChevronDown, ClipboardList } from 'lucide-react';
-import Link from 'next/link';
 import { useState } from 'react';
+import Link from 'next/link';
+import { ChevronDown, ClipboardList } from 'lucide-react';
 
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { UnitProgress } from '@/lib/types';
 import { cn } from '@/lib/utils';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
 import { ProgressBar } from './progress-bar';
 import { Button } from './ui/button';
@@ -19,12 +19,12 @@ export const UnitCard = ({ unit }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={cn('group ring-border/60 w-full overflow-hidden shadow-lg ring-1 rounded-sm')}>
+    <div className={cn('group ring-border/60 w-full overflow-hidden rounded-sm shadow-lg ring-1')}>
       <Collapsible
         open={isOpen}
         onOpenChange={setIsOpen}
       >
-        <div className='flex flex-col gap-4 p-4 rounded-sm bg-primary text-primary-foreground'>
+        <div className='bg-primary text-primary-foreground flex flex-col gap-4 rounded-sm p-4'>
           <div className='flex gap-4'>
             <div className='flex min-w-0 flex-1 flex-col items-start'>
               <h2 className='text-primary-foreground font-cherry-bomb text-outline font-bold tracking-tight text-balance md:text-5xl'>
@@ -71,7 +71,7 @@ export const UnitCard = ({ unit }: Props) => {
         {/* ── Expandable progress bars section ─────────────────── */}
 
         <CollapsibleContent className='overflow-hidden'>
-          <div className='px-5 pt-4 pb-5 sm:px-6 text-primary'>
+          <div className='text-primary px-5 pt-4 pb-5 sm:px-6'>
             <p className='mb-3 text-xs font-semibold tracking-widest uppercase'>
               Progress Distribution
             </p>
